@@ -1,0 +1,46 @@
+<apex:page standardController="Quote" extensions="QuotePDFController" renderAs="pdf" showHeader="false" applyBodyTag="false">
+    
+    <head>
+        <style>
+            th.labelCol.vfLabelColTextWrap:after {
+            content: ': ';
+            }
+        </style>        
+    </head>
+    <body>
+        <center style="font-size:30px;font-style:bold;">
+            Quote Document
+        </center><br/>
+        
+        <apex:pageBlock >
+            <apex:pageBlockSection columns="1">
+                <apex:repeat value="{!quotefields}" var="f">
+                    <apex:outputField value="{!quoteObj[f.fieldPath]}"/>
+                </apex:repeat>
+            </apex:pageBlockSection>
+            <br/><br/><br/>
+            <apex:pageBlockSection columns="1">
+                <apex:repeat value="{!oppFields}" var="f1">
+                    <apex:outputField value="{!oppObj[f1.fieldPath]}"/>
+                </apex:repeat>
+            </apex:pageBlockSection>
+            <br/><br/>
+            
+            <div style="font-size:20px;">
+                Quote Line Items
+            </div>
+            <apex:pageBlock title="">
+                <apex:pageBlockTable value="{!quoteLineItems}" var="lineItem" border="1" style="width:100%">
+                    <apex:column value="{!lineItem.LineNumber}"/>
+                    <apex:column value="{!lineItem.Quantity}"/>
+                    <apex:column value="{!lineItem.UnitPrice}"/>
+                    <apex:column value="{!lineItem.TotalPrice}"/>
+                </apex:pageBlockTable>
+            </apex:pageBlock>
+        </apex:pageBlock>
+        <br/>
+        <br/>
+   
+        <apex:outputText >Total Price : </apex:outputText><apex:outputText value="{!quoteObj.TotalPrice}"></apex:outputText>
+    </body>
+</apex:page>

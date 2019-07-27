@@ -1,0 +1,22 @@
+<apex:page controller="showAccountQuestionaries">
+
+    <apex:form >
+        <apex:pageMessages />
+
+        <apex:pageBlock title="Edit Account Questionaries">
+
+            <apex:pageBlockSection columns="1">
+                <apex:inputField value="{!accountQuestionaries.Send_Mail__c}"/>
+                <apex:inputField value="{!accountQuestionaries.Visibility__c}"/>
+            </apex:pageBlockSection>
+
+            <apex:pageBlockButtons location="bottom">
+                <apex:commandButton action="{!Save}" value="Submit"/>
+                <apex:commandButton value="Cancel" onclick="window.close();"/>
+            </apex:pageBlockButtons>
+
+        </apex:pageBlock>
+
+    </apex:form>
+
+</apex:page>

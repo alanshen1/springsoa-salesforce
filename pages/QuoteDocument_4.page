@@ -1,0 +1,16 @@
+<apex:page extensions="QuoteDocument_4" standardController="Quote" renderAs="pdf" showHeader="false" applyHtmlTag="true">
+    <head>
+        <apex:stylesheet value="{!
+          URLFOR($Resource.quoteToPDF,'quoteToPDF/htmlHead.css')}"/>
+    </head>
+    <apex:form >
+        <apex:outputText escape="false" value="{!header1}"/>
+        <apex:outputText escape="false" value="{!header2}"/>
+        <apex:outputText escape="false" value="{!footer1}"/>
+        <!--
+        <apex:dynamicComponent componentValue="{!formPanelBody}" id="formpanel"/>
+        -->
+
+    </apex:form>
+
+</apex:page>

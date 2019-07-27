@@ -1,0 +1,26 @@
+<!--
+ - Created by Spring7 on 7/9/2019.
+ -->
+
+<!-- Panorama Help -->
+<template>
+    <lightning-card
+            variant="narrow"
+            icon-name="utility:case"
+            class="card">
+        <h1 slot="title">Sales Support </h1>
+            <template if:true={ReasonPicklistValues.data}>
+                <lightning-combobox name="progress"
+                                    label="Case Reason"
+                                    value={value}
+                                    placeholder="-Select-"
+                                    options={ReasonPicklistValues.data.values}
+                                    onchange={handleChange} >
+                </lightning-combobox>
+                <lightning-input type="text" label="Related to" name="input2" value={objectName} disabled></lightning-input>
+            </template>
+        <div slot="footer">
+            <lightning-button label="Send to Support" data-id="sendToSupport" title="Send to Support" onclick={sendToSupport} class="slds-m-left_x-small"></lightning-button>
+        </div>
+    </lightning-card>
+</template>

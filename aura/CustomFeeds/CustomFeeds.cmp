@@ -1,0 +1,30 @@
+<aura:component controller="CustomFeedsController" implements="force:appHostable,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global">
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="count" type="Integer" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+    <div class="slds-section slds-is-open" aura:id="fruitsSection">
+        <!--section header-->
+        <h3 class="slds-section__title">
+            <button aria-controls="fruitsList" class="slds-button slds-section__title-action">
+                <span onclick="{!c.toggleSection}" data-auraId="fruitsSection">
+                    <lightning:icon iconName="utility:switch"
+                                    size="x-small"
+                                    class="slds-section__title-action-icon slds-button__icon_left"
+                                    alternativeText="button icon"
+                    />
+                </span>
+                <span class="slds-truncate" title="Fruits">{!'FOLLOW UP(' + v.count+')'}</span>
+            </button>
+        </h3>
+        <!--section body-->
+        <!--div class="slds-section__content" id="fruitsList">
+            <lightning:card>
+                <p class="slds-p-horizontal_small">
+                    <forceChatter:publisher context="RECORD" recordId="{!v.recordId}" />
+                    <forceChatter:feed type="Record" subjectId="{!v.recordId}"/>
+                </p>
+            </lightning:card>
+        </div-->
+    </div>
+</aura:component>

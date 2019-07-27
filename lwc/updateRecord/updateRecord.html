@@ -1,0 +1,16 @@
+<!--
+ - Created by spring4 on 30-05-2019.
+ -->
+
+<!-- Update Record -->
+<template>
+    <lightning-record-form
+            record-id={recordId}
+            object-api-name={objectApiName}
+            columns="2"
+            layout-type="Full"
+            mode="edit"
+            onsubmit={handleSubmit}
+    oncancel={handleCancel}>
+    </lightning-record-form>
+</template>

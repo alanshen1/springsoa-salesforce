@@ -1,0 +1,5 @@
+<aura:component controller="CloneOppotunityAndProducts" implements="force:hasRecordId,force:lightningQuickActionWithoutHeader" extends="c:CloneOppotunityAndProducts">
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="isCloneWithProduct" type="boolean" default="false"/>
+    Loading data, please wait. . .
+</aura:component>

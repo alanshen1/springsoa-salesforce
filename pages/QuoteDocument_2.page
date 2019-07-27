@@ -1,0 +1,7 @@
+<!--
+ - Created by Spring7 on 5/9/2019.
+ -->
+
+<apex:page id="QuoteDocument_2" controller="QuoteDocument_2" renderAs="pdf">
+    <apex:outputText value="{!generatedText}" escape="false"/>
+</apex:page>

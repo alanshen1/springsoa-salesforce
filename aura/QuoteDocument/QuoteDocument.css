@@ -1,0 +1,9 @@
+/**
+ * Created by Chintan Shah on 5/8/2019.
+ */
+.THIS {
+}
+.THIS .slds-modal__container {
+    min-width : 90rem !important;
+    left : -60% !Important;
+}

@@ -1,0 +1,4 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId,home:availableForDesktop">
+    Hello
+    <lightning:button label="Create Opportunity" variant="brand" onclick="{!c.createOpportunity}"/>
+</aura:component>

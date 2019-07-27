@@ -1,0 +1,42 @@
+<!--
+ - Created by Spring7 on 5/8/2019.
+ -->
+<aura:component description="QuoteDocument" implements="force:lightningQuickActionWithoutHeader,force:hasRecordId" controller="QuoteDocument_2">
+    <aura:attribute name="pdfContent" type="String" default="hi"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <ltng:require styles="{!$Resource.largeModal}" />
+    
+    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1"
+             class="slds-modal slds-fade-in-open slds-modal_large">
+        
+        <div class="slds-modal__container">
+            <header class="slds-modal__header">
+                <lightning:buttonIcon iconName="utility:close"
+                                      onclick="{! c.closeModel }"
+                                      alternativeText="close"
+                                      variant="bare-inverse"
+                                      class="slds-modal__close"/>
+                <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Quote PDF</h2>
+            </header>
+            <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                <iframe src="{! '/apex/QuoteDocument_2'}" frameBorder="0" style="height: 450px;width: 100%;"/>
+            </div>
+            <footer class="slds-modal__footer">
+                <lightning:button variant="neutral"
+                                  label="Cancel"
+                                  title="Cancel"
+                                  onclick="{! c.closeModel }"/>
+                <lightning:button variant="brand"
+                                  label="Save to Opportunity"
+                                  title="Save to Opportunity"
+                                  onclick="{! c.generatePDF }"/>
+                <lightning:button variant="brand"
+                                  label="Save and Email PDF"
+                                  title="Save and Email PDF"
+                                  onclick="{! c.saveToOpportunity }"/>
+            </footer>
+        </div>
+        
+    </section>
+    
+</aura:component>

@@ -1,0 +1,7 @@
+<!--
+ - Created by Spring7 on 5/23/2019.
+ -->
+
+<aura:component description="QuoteDocument_LWC" implements="force:lightningQuickActionWithoutHeader,force:hasRecordId" >
+    <c:quoteToPDF aura:id="quoteToPDF"/>
+</aura:component>

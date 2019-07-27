@@ -1,0 +1,10 @@
+<!--
+ - Created by Spring7 on 7/9/2019.
+ -->
+<aura:component implements="force:hasRecordId,flexipage:availableForAllPageTypes" access="global">
+    <aura:attribute name="recordId" default="123" type="Id"/>
+    <lightning:workspaceAPI aura:id="workspace"/>
+    <lightning:utilityBarAPI aura:id="utilitybar" />
+
+    <c:panoramaHelp recordId="{!v.recordId}" oncloseclicked="{!c.navigateToCase}" />
+</aura:component>

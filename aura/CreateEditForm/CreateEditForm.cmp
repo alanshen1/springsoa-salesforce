@@ -1,0 +1,14 @@
+<!--
+ - Created by spring4 on 30-05-2019.
+ -->
+
+<aura:component description="CreateEditForm" implements="force:hasRecordId,flexipage:availableForRecordHome">
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="objectApiName" type="String" default="Account"/>
+
+    <lightning:overlayLibrary aura:id="overlayLib"/>
+    <lightning:button variant="brand" aura:id="Update" label="Update Record" title="Update Record" onclick="{! c.showForm}" />
+
+    <lightning:button variant="brand"  aura:id="Create" label="Create Record" title="Create Record" onclick="{! c.showForm}" />
+
+</aura:component>

@@ -1,0 +1,10 @@
+<apex:page extensions="QuoteDocument_5" standardController="Quote" renderAs="pdf" showHeader="false" applyHtmlTag="true">
+    <head>
+        <apex:stylesheet value="{!URLFOR($Resource.quoteToPDF,'quoteToPDF/htmlHead.css')}"/>
+    </head>
+    
+    <apex:form >
+        <apex:outputText escape="false" value="{!Quote.Information__c}"/>
+    </apex:form>
+
+</apex:page>

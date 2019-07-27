@@ -1,0 +1,4 @@
+<apex:page standardController="Quote" extensions="QuoteDocument_3" renderAs="pdf" applyHtmlTag="false" showHeader="false">
+    <apex:outputText escape="false" value="{!qtObj.Information__c}">
+    </apex:outputText>
+</apex:page>

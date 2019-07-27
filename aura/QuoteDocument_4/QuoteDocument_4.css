@@ -1,0 +1,9 @@
+/**
+ * Created by Spring7 on 5/17/2019.
+ */
+.THIS {
+}
+.THIS .slds-modal__container {
+    min-width : 90rem !important;
+    left : -60% !Important;
+}

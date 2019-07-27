@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Target_Field_API_Names__c</fullName>
+        <externalId>false</externalId>
+        <label>Target Field API Names</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Target_SObject_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Target SObject Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <customSettingsType>List</customSettingsType>
+    <enableFeeds>false</enableFeeds>
+    <label>Object Clone Setting</label>
+    <visibility>Public</visibility>
+</CustomObject>
