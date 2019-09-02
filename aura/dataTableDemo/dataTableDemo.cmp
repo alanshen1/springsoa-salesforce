@@ -1,42 +1,41 @@
 <aura:component controller="jQueryDataTableCtrl">
     
     <!--use JQuery Data Table css,Js and jQUERY js file in lightning component by using ltng:require component-->
-
-    
+    <ltng:require styles="{! $Resource.	DataTable + '/DataTables-1.10.18/css/jquery.dataTables.min.css'}"
+                  scripts="{!join(',',
+                           $Resource.jQuery ,
+                           $Resource.DataTable + '/DataTables-1.10.18/js/jquery.dataTables.min.js')
+                           }" />
+    <aura:attribute name="lstOpp" type="Object[]"/>
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>  
     
-    <aura:attribute name="lstOpp" type="opportunity[]"/>     
+
     
     <div class="slds-m-around_medium">
         <table id="tableId" class="slds-table slds-table_bordered slds-table_cell-buffer" cellspacing="0" width="100%">
             
             <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Type</th>
-                    <th>Stage</th>
-                    <th>Amount</th>
-                    <th>Close date</th>
+                    <th>Account</th>
+                    <th>Contact</th>
+                    <th>Opportunity</th>
+
                 </tr>
                 <tr>
-                    <th>Name</th>
-                    <th>Type</th>
-                    <th>Stage</th>
-                    <th>Amount</th>
-                    <th>Close Date</th> 
+                    <th>Account</th>
+                    <th>Contact</th>
+                    <th>Opportunity</th>
                 </tr>
             </thead>
-            <tbody>
-                <aura:iteration items="{!v.lstOpp}" var="acc">
+            <!--<tbody>
+                <aura:iteration items="{!v.lstOpp}" var="item">
                     <tr>
-                        <td>{!acc.Name}</td>
-                        <td>{!acc.Type}</td>
-                        <td>{!acc.StageName}</td>
-                        <td>{!acc.Amount}</td>
-                        <td>{!acc.CloseDate}</td>
+                        <td>{!item.accName}</td>
+                        <td>{!item.con.LastName}</td>
+                        <td>{!item.opp.Name}</td>
                     </tr>
                 </aura:iteration>  
-            </tbody>
+            </tbody>-->
             
         </table>
     </div>

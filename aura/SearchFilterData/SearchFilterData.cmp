@@ -9,18 +9,38 @@
                            $Resource.jQuery ,
                            $Resource.DataTable + '/DataTables-1.10.18/js/jquery.dataTables.min.js')
                            }" />
-    <aura:attribute name="selectedLookUpRecord" type="sObject" default="{}"/>
-    <aura:attribute name="SearchKeyWord" type="String" default=""/>
     <aura:attribute name="dataAvailable" type="Boolean" default="false"/>
-    <c:customLookup SearchKeyWord="{!v.SearchKeyWord}" objectAPIName="account" IconName="standard:account" selectedRecord="{!v.selectedLookUpRecord}" label="Account Name"/>
-    <aura:attribute name="lstOpp" type="opportunity[]"/>
+    <aura:attribute name="lstOpp" type="Object[]"/>
+
+    <aura:attribute name="selectedLookUpRecordCon" type="sObject" default="{}"/>
+    <aura:attribute name="SearchKeyWordCon" type="String" default=""/>
+
+    <aura:attribute name="selectedLookUpRecordAcc" type="sObject" default="{}"/>
+    <aura:attribute name="SearchKeyWordAcc" type="String" default=""/>
+    <div class="c-container">
+        <lightning:layout horizontalAlign="space">
+            <lightning:layoutItem padding="around-small">
+                <div class="custom-box">
+                    <c:customLookup SearchKeyWord="{!v.SearchKeyWordAcc}" objectAPIName="account" IconName="standard:account" selectedRecord="{!v.selectedLookUpRecordAcc}" label="Account Name"/>
+                </div>
+            </lightning:layoutItem>
+            <lightning:layoutItem padding="around-small">
+                <div class="custom-box">
+                    <c:customLookup SearchKeyWord="{!v.SearchKeyWordCon}" objectAPIName="contact" IconName="standard:contact" selectedRecord="{!v.selectedLookUpRecordCon}" label="Contact Name"/>
+                </div>
+            </lightning:layoutItem>
+            <lightning:layoutItem padding="around-small">
+                <div class="custom-box">
+                    <div></div>
+                    <lightning:button variant="brand" label="Submit" onclick="{! c.handleClick }" />
+                </div>
+            </lightning:layoutItem>
+        </lightning:layout>
+    </div>
 
     <aura:if isTrue="{!v.dataAvailable}">
         <c:dataTableDemo lstOpp="{!v.lstOpp}"/>
-        <aura:set attribute="else">
-            No Data
-        </aura:set>
     </aura:if>
 
-    <lightning:button variant="brand" label="Submit" onclick="{! c.handleClick }" />
+
 </aura:component>
