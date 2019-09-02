@@ -7,7 +7,6 @@
     <aura:attribute name="IconName" type="string" default=""/>
     <aura:attribute name="label" type="string" default=""/>
     <aura:attribute name="Message" type="String" default=""/>
-    <aura:attribute name="accountName" type="String" default=""/>
     <!--declare events hendlers-->  
     <aura:handler name="oSelectedRecordEvent" event="c:selectedsObjectRecordEvent" action="{!c.handleComponentEvent}"/>
    

@@ -1,0 +1,26 @@
+<!--
+ - Created by spring4 on 02-09-2019.
+ -->
+
+<aura:component description="SearchFilterData" controller="jQueryDataTableCtrl" access="global">
+    <!-- Create attribute to store lookup value as a sObject-->
+    <ltng:require styles="{! $Resource.	DataTable + '/DataTables-1.10.18/css/jquery.dataTables.min.css'}"
+                  scripts="{!join(',',
+                           $Resource.jQuery ,
+                           $Resource.DataTable + '/DataTables-1.10.18/js/jquery.dataTables.min.js')
+                           }" />
+    <aura:attribute name="selectedLookUpRecord" type="sObject" default="{}"/>
+    <aura:attribute name="SearchKeyWord" type="String" default=""/>
+    <aura:attribute name="dataAvailable" type="Boolean" default="false"/>
+    <c:customLookup SearchKeyWord="{!v.SearchKeyWord}" objectAPIName="account" IconName="standard:account" selectedRecord="{!v.selectedLookUpRecord}" label="Account Name"/>
+    <aura:attribute name="lstOpp" type="opportunity[]"/>
+
+    <aura:if isTrue="{!v.dataAvailable}">
+        <c:dataTableDemo lstOpp="{!v.lstOpp}"/>
+        <aura:set attribute="else">
+            No Data
+        </aura:set>
+    </aura:if>
+
+    <lightning:button variant="brand" label="Submit" onclick="{! c.handleClick }" />
+</aura:component>

@@ -1,11 +1,7 @@
 <aura:component controller="jQueryDataTableCtrl">
     
     <!--use JQuery Data Table css,Js and jQUERY js file in lightning component by using ltng:require component-->
-    <ltng:require styles="{! $Resource.	DataTable + '/DataTables-1.10.18/css/jquery.dataTables.min.css'}" 
-                  scripts="{!join(',', 
-                           $Resource.jQuery , 
-                           $Resource.DataTable + '/DataTables-1.10.18/js/jquery.dataTables.min.js')
-                           }" afterScriptsLoaded="{!c.scriptsLoaded}"/>
+
     
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>  
     

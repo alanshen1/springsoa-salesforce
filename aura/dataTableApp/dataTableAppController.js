@@ -1,9 +1,11 @@
 ({
 	handleClick : function(component, event, helper) {
-		debugger;
-        var accObj = component.get("v.selectedLookUpRecord");
-        var accountName = component.get("v.accountName");
+
+        /*var accObj = component.get("v.selectedLookUpRecord");
+        var accountName = component.get("v.SearchKeyWord");
         console.log(accObj.Id);
         console.log(accountName);
+        component.set('v.dataAvailable',true);
+        debugger;*/
 	}
 })
