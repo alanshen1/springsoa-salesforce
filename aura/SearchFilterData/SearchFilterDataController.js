@@ -21,6 +21,11 @@
                 console.log(JSON.parse(JSON.stringify(response.getReturnValue())));
                 component.set('v.lstOpp', response.getReturnValue());
                 component.set('v.dataAvailable',true);
+                setTimeout(function(){
+                    var uid = Math.ceil(Math.random() * 20);
+                    helper.createTable(component,uid);
+
+                }, 500);
             }
         });
         $A.enqueueAction(action);

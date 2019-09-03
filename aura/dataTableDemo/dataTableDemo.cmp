@@ -12,31 +12,7 @@
 
     
     <div class="slds-m-around_medium">
-        <table id="tableId" class="slds-table slds-table_bordered slds-table_cell-buffer" cellspacing="0" width="100%">
-            
-            <thead>
-                <tr>
-                    <th>Account</th>
-                    <th>Contact</th>
-                    <th>Opportunity</th>
 
-                </tr>
-                <tr>
-                    <th>Account</th>
-                    <th>Contact</th>
-                    <th>Opportunity</th>
-                </tr>
-            </thead>
-            <!--<tbody>
-                <aura:iteration items="{!v.lstOpp}" var="item">
-                    <tr>
-                        <td>{!item.accName}</td>
-                        <td>{!item.con.LastName}</td>
-                        <td>{!item.opp.Name}</td>
-                    </tr>
-                </aura:iteration>  
-            </tbody>-->
-            
-        </table>
+        <div id="tableDiv"></div>
     </div>
 </aura:component>

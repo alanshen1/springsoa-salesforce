@@ -39,7 +39,9 @@
     </div>
 
     <aura:if isTrue="{!v.dataAvailable}">
-        <c:dataTableDemo lstOpp="{!v.lstOpp}"/>
+        <div class="slds-m-around_medium">
+            <div id="tableDiv"></div>
+        </div>
     </aura:if>
 
 

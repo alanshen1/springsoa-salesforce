@@ -1,16 +1,22 @@
 ({
+    getUID: function(){
+      return this.uid++;
+    },
     scriptsLoaded : function(component, event, helper) {
         console.log('Script loaded..');
     },
     
     doInit : function(component,event,helper){
+        window.uid = 0;
             setTimeout(function(){
-                var tableData = component.get('v.lstOpp');
+                var uid = Math.ceil(Math.random() * 20);
+                helper.createTable(component,uid);
+                /*var tableData = component.get('v.lstOpp');
                 console.log(JSON.parse(JSON.stringify(tableData)));
                 $('#tableId thead tr:eq(1) th').each( function () {
                     var title = $('#example thead tr:eq(0) th').eq( $(this).index() ).text();
                     $(this).html( '<input type="text" placeholder="Search '+title+'" />' );
-                } );
+                } ); 
                 var table = $('#tableId').DataTable({
                     orderCellsTop: true,
                     data: tableData,
@@ -28,7 +34,7 @@
                     });
                 } );
                 $('div.dataTables_filter input').addClass('slds-input');
-                $('div.dataTables_filter input').css("marginBottom", "10px");
+                $('div.dataTables_filter input').css("marginBottom", "10px");*/
             }, 500);
     },
 })

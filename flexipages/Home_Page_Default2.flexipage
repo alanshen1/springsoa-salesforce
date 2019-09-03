@@ -34,6 +34,9 @@
         <componentInstances>
             <componentName>home:assistant</componentName>
         </componentInstances>
+        <componentInstances>
+            <componentName>LazyLoadDatatable</componentName>
+        </componentInstances>
         <mode>Replace</mode>
         <name>sidebar</name>
         <type>Region</type>
