@@ -32,7 +32,7 @@
             <lightning:layoutItem padding="around-small">
                 <div class="custom-box">
                     <div></div>
-                    <lightning:button variant="brand" label="Submit" onclick="{! c.handleClick }" />
+                    <lightning:button variant="brand" label="Submit" onclick="{! c.handleClick }" class="btnMargin" />
                 </div>
             </lightning:layoutItem>
         </lightning:layout>

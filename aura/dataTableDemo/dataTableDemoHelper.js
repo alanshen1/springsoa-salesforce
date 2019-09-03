@@ -5,7 +5,7 @@
         var tableWrapper = $('#tableDiv');
         var tableData = component.get('v.lstOpp');
         var columns = [
-            { "data": "accName", title: 'Account' },
+            { "data": "accName", title: 'Account',"defaultContent": "<i>Not set</i>" },
             { "data": "con.LastName" , "defaultContent": "<i>Not set</i>", title: 'Contact'},
             { "data": "opp.Name", "defaultContent": "<i>Not set</i>", title: 'Opportunity'}
         ];

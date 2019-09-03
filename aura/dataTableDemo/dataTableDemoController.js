@@ -16,7 +16,7 @@
                 $('#tableId thead tr:eq(1) th').each( function () {
                     var title = $('#example thead tr:eq(0) th').eq( $(this).index() ).text();
                     $(this).html( '<input type="text" placeholder="Search '+title+'" />' );
-                } ); 
+                } );
                 var table = $('#tableId').DataTable({
                     orderCellsTop: true,
                     data: tableData,
