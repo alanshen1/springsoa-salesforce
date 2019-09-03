@@ -22,12 +22,22 @@ public with sharing class jQueryDataTableCtrl {
         List<FilterWrapper> tableData = new List<FilterWrapper>();
         String query = 'SELECT FirstName, LastName,Account.Name,AccountId, (SELECT Name FROM Opportunities) FROM Contact';
         query += ' WHERE ';
+        List<String> whereParts = new List<String>();
         if(String.isNotBlank(accountId)){
-            query += ' AccountId = :accountId';
-        }else{
-            String accountStrTmp = '%' + accountStr + '%';
-            query += ' Account.Name LIKE :accountStrTmp';
+            whereParts.add( ' AccountId = :accountId');
         }
+        if(String.isNotBlank(accountStr)){
+            String accountStrTmp = '%' + accountStr + '%';
+            whereParts.add(' Account.Name LIKE :accountStrTmp');
+        }
+        if(String.isNotBlank(contactId)){
+            whereParts.add(' Id = :contactId');
+        }
+        if(String.isNotBlank(contactStr)){
+            String contactStrTmp = '%' + contactStr + '%';
+            whereParts.add(' FirstName LIKE :contactStrTmp OR LastName LIKE :contactStrTmp OR Email LIKE :contactStrTmp');
+        }
+        query += String.join(whereParts,' AND ');
         System.debug(JSON.serialize(Database.query(query)));
         for(Contact con : Database.query(query)){
 
