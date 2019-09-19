@@ -1,0 +1,9 @@
+<!--
+ - Created by Spring7 on 9/19/2019.
+ -->
+<aura:component extensible="true" description="CloneComponentBase" controller="CloneComponentBaseController" implements="force:lightningQuickActionWithoutHeader,lightning:actionOverride,force:hasRecordId">
+    <aura:attribute name="recordId" type="String"/>
+    <aura:attribute name="sObjectApiName" type="String"/>
+    <aura:attribute name="fieldSetName" type="String"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+</aura:component>
