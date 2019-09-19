@@ -27,6 +27,8 @@
                              hideCheckboxColumn="false"
                              columns="{!v.accountColums}"
                              data="{!v.accountData}"
-                             onrowselection="{! c.updateSelectedText }"/>
+                             enableInfiniteLoading="{!v.enableInfiniteLoading}"
+                             onrowselection="{! c.updateSelectedText }"
+                             onloadmore="{!c.handleLoadMore}"/>
     </div>
 </aura:component>
