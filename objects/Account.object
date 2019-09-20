@@ -560,7 +560,7 @@
     </searchLayouts>
     <sharingModel>ReadWrite</sharingModel>
     <fieldSets>
-        <fullName>ClonseAccount</fullName>
+        <fullName>CloneAccount</fullName>
         <description>Quick Action</description>
         <displayedFields>
             <field>Name</field>
@@ -607,7 +607,7 @@
             <isFieldManaged>false</isFieldManaged>
             <isRequired>false</isRequired>
         </displayedFields>
-        <label>ClonseAccount</label>
+        <label>CloneAccount</label>
     </fieldSets>
     <listViews>
         <fullName>AllAccounts</fullName>
