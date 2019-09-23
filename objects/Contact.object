@@ -497,6 +497,21 @@
         <searchResultsAdditionalFields>CORE.USERS.ALIAS</searchResultsAdditionalFields>
     </searchLayouts>
     <sharingModel>ControlledByParent</sharingModel>
+    <fieldSets>
+        <fullName>ContactClone</fullName>
+        <description>Clone Contact Component</description>
+        <displayedFields>
+            <field>FirstName</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>LastName</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>ContactClone</label>
+    </fieldSets>
     <listViews>
         <fullName>AllContacts</fullName>
         <filterScope>Everything</filterScope>

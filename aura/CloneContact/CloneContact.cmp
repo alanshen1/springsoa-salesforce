@@ -1,0 +1,8 @@
+<!--
+ - Created by Spring7 on 9/23/2019.
+ -->
+
+<aura:component description="CloneContact" extends="c:CloneComponentBase" implements="force:lightningQuickActionWithoutHeader,lightning:actionOverride,force:hasRecordId">
+    <aura:set attribute="sObjectApiName" value="Contact" />
+    <aura:set attribute="fieldSetName" value="ContactClone"/>
+</aura:component>

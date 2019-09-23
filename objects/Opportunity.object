@@ -372,6 +372,31 @@
         </displayedFields>
         <label>Quote Document Fields</label>
     </fieldSets>
+    <fieldSets>
+        <fullName>OpportunityClone</fullName>
+        <description>Clone Opportunity Component</description>
+        <displayedFields>
+            <field>Name</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Amount</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>CloseDate</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Description</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>OpportunityClone</label>
+    </fieldSets>
     <listViews>
         <fullName>AllOpportunities</fullName>
         <filterScope>Everything</filterScope>
