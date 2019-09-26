@@ -2,7 +2,7 @@
  * Created by Spring7 on 9/19/2019.
  */
 
-public class CloneComponentBaseController {
+public without sharing class CloneComponentBaseController {
     @AuraEnabled
     public static sObject getRecord(Id recordId, String fieldSetName,String sObjectApiName){
         System.debug(' CloneComponentBaseController.getRecord recordId: ' + recordId);
