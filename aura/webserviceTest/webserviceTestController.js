@@ -5,14 +5,15 @@
 ({
     doInit: function (c, e, h) {
         var xhr = new XMLHttpRequest();
-        var url = 'https://reqres.in/api/users';
-        xhr.open('GET', url, true);
+        var url = 'https://basic-authentication-ws.herokuapp.com/echo';
+        xhr.open('POST', url, true);
         xhr.onload = function () {
             if (this.status === 200) {
-                var response = JSON.parse(this.responseText);
-                c.set('v.records', response.data);
+                console.log(this.response);
             }
         };
-        xhr.send();
+
+        xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+        xhr.send(JSON.stringify({message: "Test"}));
     }
 });
