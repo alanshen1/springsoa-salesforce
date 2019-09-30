@@ -12,70 +12,49 @@
             action="{!c.doInit}"/>
 
     <aura:attribute
-            name="records"
-            type="List"
-            default="[]"/>
+            name="message"
+            type="String"
+            default=""/>
+    <aura:attribute
+            name="response"
+            type="String"
+            default=""/>
+    <aura:attribute
+            name="isProcessing"
+            type="Boolean"
+            default="false"/>
 
-    <article
-            class="slds-card">
-        <div class="slds-card__header slds-grid">
-            <header class="slds-media slds-media_center slds-has-flexi-truncate">
-                <div class="slds-media__body">
-                    <h2 class="slds-card__header-title">
-                        <a href="javascript:void(0);"
-                           class="slds-card__header-link slds-truncate"
-                           title="Contacts (1)">
-                            <span>Records</span>
-                        </a>
-                    </h2>
-                </div>
-            </header>
+    <div class="slds-is-relative">
+        <lightning:spinner
+                variant="brand"
+                size="medium"
+                class="{!v.isProcessing? '':'slds-hide'}"
+                alternativeText="Loading..."/>
+        <div class="slds-box slds-box_small"
+             style="background: #FFF;">
+            <lightning:layout
+                    multipleRows="true">
+                <lightning:layoutItem
+                        size="12"
+                        mediumDeviceSize="6"
+                        largeDeviceSize="2">
+                    <lightning:input
+                            label="Message"
+                            value="{!v.message}"/>
+                </lightning:layoutItem>
+                <lightning:layoutItem
+                        size="12">
+                    <lightning:button
+                            label="Post Data"
+                            onclick="{!c.postData}"/>
+                </lightning:layoutItem>
+                <lightning:layoutItem
+                        size="12">
+                    <p class="slds-m-top_small">
+                        Response: {!v.response}</p>
+                </lightning:layoutItem>
+            </lightning:layout>
         </div>
-        <div class="slds-card__body">
-            <table class="slds-table slds-table_cell-buffer slds-no-row-hover slds-table_bordered slds-table_fixed-layout"
-                   role="grid">
-                <thead>
-                <tr class="slds-line-height_reset">
-                    <th class=""
-                        scope="col">
-                        <div class="slds-truncate"
-                             title="Name">
-                            First
-                            Name
-                        </div>
-                    </th>
-                    <th class=""
-                        scope="col">
-                        <div class="slds-truncate"
-                             title="Company">
-                            Last
-                            Name
-                        </div>
-                    </th>
-                </tr>
-                </thead>
-                <tbody>
-                <aura:iteration
-                        items="{!v.records}"
-                        var="record">
-                    <tr class="slds-hint-parent">
-                        <td role="gridcell">
-                            <div class="slds-truncate"
-                                 title="Company One">
-                                {!record.first_name}
-                            </div>
-                        </td>
-                        <td role="gridcell">
-                            <div class="slds-truncate"
-                                 title="Director of Operations">
-                                {!record.last_name}
-                            </div>
-                        </td>
-                    </tr>
-                </aura:iteration>
-                </tbody>
-            </table>
-        </div>
-    </article>
+    </div>
 
 </aura:component>
