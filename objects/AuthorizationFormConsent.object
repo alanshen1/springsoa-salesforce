@@ -147,21 +147,42 @@
         <trackHistory>false</trackHistory>
     </fields>
     <fields>
-        <fullName>PartyId</fullName>
+        <fullName>ConsentGiverId</fullName>
         <trackHistory>false</trackHistory>
         <type>Lookup</type>
     </fields>
+    <fields>
+        <fullName>DocumentVersionId</fullName>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Status</fullName>
+        <trackHistory>false</trackHistory>
+    </fields>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <enableFeeds>false</enableFeeds>
+    <externalSharingModel>Private</externalSharingModel>
     <searchLayouts>
+        <customTabListAdditionalFields>ConsentGiver</customTabListAdditionalFields>
+        <customTabListAdditionalFields>AuthorizationFormText</customTabListAdditionalFields>
+        <customTabListAdditionalFields>ConsentCapturedSource</customTabListAdditionalFields>
+        <customTabListAdditionalFields>ConsentCapturedSourceType</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Status</customTabListAdditionalFields>
         <customTabListAdditionalFields>LastModifiedDate</customTabListAdditionalFields>
         <customTabListAdditionalFields>LastModifiedBy</customTabListAdditionalFields>
-        <customTabListAdditionalFields>Party</customTabListAdditionalFields>
-        <customTabListAdditionalFields>AuthorizationFormText</customTabListAdditionalFields>
+        <searchResultsAdditionalFields>ConsentGiver</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>AuthorizationFormText</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>ConsentCapturedSource</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>ConsentCapturedSourceType</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Status</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>LastModifiedDate</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>LastModifiedBy</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>Party</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>AuthorizationFormText</searchResultsAdditionalFields>
     </searchLayouts>
     <sharingModel>Private</sharingModel>
+    <listViews>
+        <fullName>All_AuthorizationFormConsents</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All Authorization Form Consents</label>
+    </listViews>
 </CustomObject>

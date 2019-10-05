@@ -4,5 +4,6 @@
         <type>Picklist</type>
     </fields>
     <enableFeeds>false</enableFeeds>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
     <sharingModel>ControlledByParent</sharingModel>
 </CustomObject>

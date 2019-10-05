@@ -137,6 +137,7 @@
     </fields>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <enableFeeds>false</enableFeeds>
+    <externalSharingModel>Private</externalSharingModel>
     <sharingModel>Private</sharingModel>
     <listViews>
         <fullName>AllScorecards</fullName>

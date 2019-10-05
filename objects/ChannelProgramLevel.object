@@ -149,6 +149,7 @@
     </fields>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <enableFeeds>false</enableFeeds>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
     <searchLayouts>
         <customTabListAdditionalFields>Program</customTabListAdditionalFields>
         <customTabListAdditionalFields>Rank</customTabListAdditionalFields>

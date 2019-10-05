@@ -146,15 +146,29 @@
         <fullName>RevisionNumber</fullName>
         <trackHistory>false</trackHistory>
     </fields>
+    <fields>
+        <fullName>IsSignatureRequired</fullName>
+        <trackHistory>false</trackHistory>
+    </fields>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <enableFeeds>false</enableFeeds>
+    <externalSharingModel>Private</externalSharingModel>
     <searchLayouts>
+        <customTabListAdditionalFields>RevisionNumber</customTabListAdditionalFields>
+        <customTabListAdditionalFields>EffectiveFromDate</customTabListAdditionalFields>
+        <customTabListAdditionalFields>EffectiveToDate</customTabListAdditionalFields>
         <customTabListAdditionalFields>LastModifiedDate</customTabListAdditionalFields>
         <customTabListAdditionalFields>LastModifiedBy</customTabListAdditionalFields>
-        <customTabListAdditionalFields>DefaultAuthFormText</customTabListAdditionalFields>
+        <searchResultsAdditionalFields>RevisionNumber</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>EffectiveFromDate</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>EffectiveToDate</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>LastModifiedDate</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>LastModifiedBy</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>DefaultAuthFormText</searchResultsAdditionalFields>
     </searchLayouts>
     <sharingModel>Private</sharingModel>
+    <listViews>
+        <fullName>All_AuthorizationForms</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All Authorization Forms</label>
+    </listViews>
 </CustomObject>

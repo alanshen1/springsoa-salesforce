@@ -187,6 +187,7 @@
     </fields>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <enableFeeds>false</enableFeeds>
+    <externalSharingModel>Private</externalSharingModel>
     <searchLayouts>
         <customTabListAdditionalFields>Allocation</customTabListAdditionalFields>
         <customTabListAdditionalFields>Budget</customTabListAdditionalFields>
