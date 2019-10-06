@@ -7,9 +7,9 @@ global without sharing class ExternalDataSourceProvider extends DataSource.Provi
     override global List<DataSource.AuthenticationCapability> getAuthenticationCapabilities() {
         System.debug(' ExternalDataSourceProvider.getAuthenticationCapabilities ');
         List<DataSource.AuthenticationCapability> capabilities =  new List<DataSource.AuthenticationCapability> {
-                DataSource.AuthenticationCapability.ANONYMOUS,
-                DataSource.AuthenticationCapability.OAUTH
+                DataSource.AuthenticationCapability.ANONYMOUS
         };
+        System.debug(' ExternalDataSourceProvider.getAuthenticationCapabilities ' + JSON.serialize(capabilities) );
         return capabilities;
     }
 
@@ -18,13 +18,14 @@ global without sharing class ExternalDataSourceProvider extends DataSource.Provi
         List<DataSource.Capability> capabilities = new List<DataSource.Capability> {
             DataSource.Capability.ROW_QUERY
         };
+        System.debug(' ExternalDataSourceProvider.getCapabilities ' + JSON.serialize(capabilities) );
         return capabilities;
     }
 
     override global DataSource.Connection getConnection(DataSource.ConnectionParams connectionParams) {
-        System.debug(' ExternalDataSourceProvider.getConnection connectionParams: ' + JSON.serialize(connectionParams));
+        System.debug(' ExternalDataSourceProvider.getConnection connectionParams: ' + connectionParams);
         DataSource.Connection connection = new ExternalDataSourceConnection(connectionParams);
-        System.debug(' ExternalDataSourceProvider.getConnection connection: ' + JSON.serialize(connection));
+        System.debug(' ExternalDataSourceProvider.getConnection connection: ' + connection);
         return connection;
     }
 
