@@ -28,18 +28,18 @@ public without sharing class ExternalDataService {
     }
 
     public List<Map<String, Object>> getData(DataSource.QueryContext context) {
-        System.debug(' ExternalDataService.getData context ' + JSON.serialize(context) );
+        System.debug(' ExternalDataService.getData context ' + context );
         return getEmployeeData(context);
     }
 
     private DataSource.Table getEmployeeTable() {
-        List<DataSource.Column> columns = new List<DataSource.Column> {
-                // get(name, label, description, isSortable, isFilterable, type, length, decimalPlaces)
-                DataSource.Column.get( 'Employee_Id', 'Employee Id', 'Employee Identification Desc', false, false, DataSource.DataType.String_Short_Type, 0),
-                DataSource.Column.indirectLookup( 'Account_Key', 'Account', 'Account_Key__c'),
-                DataSource.Column.text('Employee_Name',255)
-        };
-        return DataSource.Table.get('Employee', 'Employee_Id', columns);
+        List<DataSource.Column> columns;
+        columns = new List<DataSource.Column>();
+        columns.add(DataSource.Column.text('ExternalId', 255));
+        columns.add(DataSource.Column.text('Name', 255));
+        columns.add(DataSource.Column.url('DisplayUrl'));
+        columns.add(DataSource.Column.indirectLookup('EmployeeAccountKey', 'Account', 'Account_Key__c'));
+        return DataSource.Table.get('Employee', 'Id', columns);
     }
 
     private List<Map<String, Object>> getEmployeeData(DataSource.QueryContext context) {
@@ -48,13 +48,15 @@ public without sharing class ExternalDataService {
     }
 
     private DataSource.Table getAddressTable() {
-        List<DataSource.Column> columns = new List<DataSource.Column> {
-                // get(name, label, description, isSortable, isFilterable, type, length, decimalPlaces)
-                DataSource.Column.get( 'Address_Id', 'Address Id', 'Address Identification Desc', false, false, DataSource.DataType.String_Short_Type, 0),
-                DataSource.Column.indirectLookup( 'Account_Key', 'Account', 'Account_Key__c'),
-                DataSource.Column.text('Address_Name',255)
-        };
-        return DataSource.Table.get('Address', 'Address_Id', columns);
+        DataSource.Table table = new DataSource.Table();
+        List<DataSource.Column> columns;
+        columns = new List<DataSource.Column>();
+        columns.add(DataSource.Column.text('ExternalId', 255));
+        columns.add(DataSource.Column.text('Street', 255));
+        columns.add(DataSource.Column.text('ZipCode', 255));
+        columns.add(DataSource.Column.url('DisplayUrl'));
+        columns.add(DataSource.Column.indirectLookup('AddressAccountKey', 'Account', 'Account_Key__c'));
+        return DataSource.Table.get('Address', 'Id', columns);
     }
 
     private List<Map<String, Object>> getAddressData(DataSource.QueryContext context) {
