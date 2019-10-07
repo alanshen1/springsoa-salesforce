@@ -39,11 +39,26 @@ public without sharing class ExternalDataService {
         columns.add(DataSource.Column.text('Name', 255));
         columns.add(DataSource.Column.url('DisplayUrl'));
         columns.add(DataSource.Column.indirectLookup('EmployeeAccountKey', 'Account', 'Account_Key__c'));
-        return DataSource.Table.get('Employee', 'Id', columns);
+        return DataSource.Table.get('Employee', 'ExternalId', columns);
     }
 
     private List<Map<String, Object>> getEmployeeData(DataSource.QueryContext context) {
-        List<Map<String,Object>> dataRows = new List<Map<String,Object>>();
+        Map<String,Object> row1 = new Map<String,Object> {
+                'ExternalId' => 'Emp1',
+                'Name' => 'Chintan Shah',
+                'EmployeeAccountKey' => 'ACN1'
+        };
+        Map<String,Object> row2 = new Map<String,Object> {
+                'ExternalId' => 'Emp2',
+                'Name' => 'Mark Twain',
+                'EmployeeAccountKey' => 'ACN1'
+        };
+        Map<String,Object> row3 = new Map<String,Object> {
+                'ExternalId' => 'Emp3',
+                'Name' => 'John Doe',
+                'EmployeeAccountKey' => 'ACN2'
+        };
+        List<Map<String,Object>> dataRows = new List<Map<String,Object>> { row1, row2, row3 };
         return dataRows;
     }
 
@@ -56,7 +71,7 @@ public without sharing class ExternalDataService {
         columns.add(DataSource.Column.text('ZipCode', 255));
         columns.add(DataSource.Column.url('DisplayUrl'));
         columns.add(DataSource.Column.indirectLookup('AddressAccountKey', 'Account', 'Account_Key__c'));
-        return DataSource.Table.get('Address', 'Id', columns);
+        return DataSource.Table.get('Address', 'ExternalId', columns);
     }
 
     private List<Map<String, Object>> getAddressData(DataSource.QueryContext context) {
