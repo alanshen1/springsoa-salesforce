@@ -42,7 +42,7 @@ public without sharing class ExternalDataService {
         return DataSource.Table.get('Employee', 'ExternalId', columns);
     }
 
-    private List<Map<String, Object>> getEmployeeData(DataSource.QueryContext context) {
+    private List<Map<String, Object>> getDummyData() {
         Map<String,Object> row1 = new Map<String,Object> {
                 'ExternalId' => 'Emp1',
                 'Name' => 'Chintan Shah',
@@ -60,6 +60,38 @@ public without sharing class ExternalDataService {
         };
         List<Map<String,Object>> dataRows = new List<Map<String,Object>> { row1, row2, row3 };
         return dataRows;
+    }
+
+    private List<Map<String, Object>> getEmployeeData(DataSource.QueryContext context) {
+        if( context.tableSelection != null && context.tableSelection.tableSelected == 'Employee' ) {
+            DataSource.Filter filter = context.tableSelection.filter;
+            String url = '/hr/employees';
+            if( filter != null ) {
+                url = '/hr/employee/' + filter.columnName + '/' + filter.columnValue;
+            }
+            List<Map<String,Object>> response = httpGetCallout('HerokuBasicAuth', url);
+            return response;
+        }
+        return new List<Map<String,Object>>();
+    }
+
+    public static List<Map<String,Object>> httpGetCallout(String namedCredentials, String url) {
+        List<Map<String,Object>> returnEmployees = new List<Map<String,Object>>();
+        Http http = new Http();
+        HttpRequest request = new HttpRequest();
+        request.setEndpoint('callout:' + namedCredentials + url );
+        request.setMethod('GET');
+        HttpResponse response = http.send(request);
+        if (response.getStatusCode() == 200) {
+            System.debug(' response.getBody() ' + response.getBody() );
+            List<Object> employees = (List<Object>) JSON.deserializeUntyped( response.getBody() );
+            for(Object employee : employees ) {
+                Map<String, Object> currentEmployee = ( Map<String, Object> ) ( employee );
+                returnEmployees.add( currentEmployee );
+            }
+        }
+        system.debug( ' ExternalDataService.httpGetCallout returnEmployees ' + returnEmployees  );
+        return returnEmployees;
     }
 
     private DataSource.Table getAddressTable() {
