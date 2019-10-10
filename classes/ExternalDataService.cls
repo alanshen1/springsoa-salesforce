@@ -65,9 +65,17 @@ public without sharing class ExternalDataService {
     private List<Map<String, Object>> getEmployeeData(DataSource.QueryContext context) {
         if( context.tableSelection != null && context.tableSelection.tableSelected == 'Employee' ) {
             DataSource.Filter filter = context.tableSelection.filter;
+            System.debug(' getEmployeeData filter ' + filter );
             String url = '/hr/employees';
             if( filter != null ) {
-                url = '/hr/employee/' + filter.columnName + '/' + filter.columnValue;
+                if( filter.columnName != null  && filter.columnValue != null ) {
+                    url = '/hr/employee/' + filter.columnName + '/' + filter.columnValue;
+                } else if( filter.subfilters != null && filter.subfilters.size() > 0 ) {
+                    DataSource.Filter subFilter = filter.subfilters.get(0);
+                    if( subFilter.columnName != null  && subFilter.columnValue != null ) {
+                        url = '/hr/employee/' + subFilter.columnName + '/' + subFilter.columnValue;
+                    }
+                }
             }
             List<Map<String,Object>> response = httpGetCallout('HerokuBasicAuth', url);
             return response;
@@ -81,6 +89,7 @@ public without sharing class ExternalDataService {
         HttpRequest request = new HttpRequest();
         request.setEndpoint('callout:' + namedCredentials + url );
         request.setMethod('GET');
+        System.debug(' httpGetCallout url ' + url );
         HttpResponse response = http.send(request);
         if (response.getStatusCode() == 200) {
             System.debug(' response.getBody() ' + response.getBody() );
