@@ -16,12 +16,12 @@ public with sharing class MockDemoService {
         return outputs;
     }
 
-    public List<String> toLower(List<String> inputs) {
-        List<String> outputs = new List<String>();
+    public String concat(List<String> inputs) {
+        String output = '';
         for(String input : inputs ) {
-            outputs.add( input.toLowerCase() );
+            output += ' ' + input;
         }
-        return outputs;
+        return output;
     }
 
 

@@ -37,10 +37,14 @@ public with sharing class MockDemoServiceCaller {
     /**
      * sample routine that we are going to test.
      */
-    public void sampleRoutine() {
+    public String sampleRoutine(List<String> inputs) {
         try {
-            mockDemoService.toLower( new List<String> { 'John', 'Doe' } );
-            mockDemoService.toUpper( new List<String> { 'Mark', 'Twain' } );
+            System.debug(' MockDemoServiceCaller.sampleRoutine inputs ' + JSON.serialize(inputs) );
+            List<String> outputs = mockDemoService.toUpper( new List<String> { 'John', 'Doe' } );
+            System.debug(' MockDemoServiceCaller.sampleRoutine outputs ' + JSON.serialize(outputs) );
+            String output = mockDemoService.concat( outputs );
+            System.debug(' MockDemoServiceCaller.sampleRoutine output ' + output );
+            return output;
         } catch(Exception e) {
             throw new MockException('What\' up? ' + e.getStackTraceString() );
         }
