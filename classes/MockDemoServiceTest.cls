@@ -19,12 +19,14 @@ public with sharing class MockDemoServiceTest {
     public static void testToUpper() {
         List<String> inputs = new List<String> { 'John', 'Doe' };
         List<String> outputs = new MockDemoService().toUpper( inputs );
-        System.assert( inputs.get(0).equals( outputs.get(0)) );
+        System.assert( inputs.get(0).toUpperCase().equals( outputs.get(0)) );
     }
 
     @isTest
     public static void testConcat() {
-
+        List<String> inputs = new List<String> { 'John', 'Doe' };
+        String output = new MockDemoService().concat( inputs );
+        System.assertEquals( output, 'John Doe', ' Should be equal ' );
     }
 
 }

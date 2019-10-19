@@ -17,9 +17,9 @@ public with sharing class MockDemoService {
     }
 
     public String concat(List<String> inputs) {
-        String output = '';
+        String output = null;
         for(String input : inputs ) {
-            output += ' ' + input;
+            output = ( output == null ? '' : ( output + ' ' ) ) + input;
         }
         return output;
     }
