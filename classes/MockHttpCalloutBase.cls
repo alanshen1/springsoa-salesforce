@@ -32,16 +32,36 @@ public virtual with sharing class MockHttpCalloutBase
 
     }
 
+    public void addErrorResponse(String endPoint, Integer responseCode) {
+        HttpResponse response = new HttpResponse();
+        response.setStatusCode(responseCode);
+        addHttpResponse(endpoint, response);
+    }
+
+    public void addStringHttpResponse(String endpoint, String responseString) {
+        HttpResponse response = new HttpResponse();
+        response.setHeader('Content-Type', 'text/plain');
+        response.setBody(responseString);
+        response.setStatusCode(200);
+        addHttpResponse(endpoint, response);
+    }
+
+    public void addJsonHttpResponse(String endpoint, String responseJson) {
+        HttpResponse response = new HttpResponse();
+        response.setHeader('Content-Type', 'application/json');
+        response.setBody(responseJson);
+        response.setStatusCode(200);
+        addHttpResponse(endpoint, response);
+    }
+
     /** add an HTTP response to the response list for the specified endpoint */
     public void addHttpResponse(String endpoint, HttpResponse response) {
         String normalizedEndpoint = normalizeEndpoint(endpoint);
         List<HttpResponse> httpResponseList = httpResponseListMap.get(normalizedEndpoint);
-
         if (httpResponseList == null) {
             httpResponseList = new List<HttpResponse>();
             httpResponseListMap.put(normalizedEndpoint, httpResponseList);
         }
-
         httpResponseList.add(response);
     }
 

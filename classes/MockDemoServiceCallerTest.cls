@@ -36,7 +36,7 @@ public with sharing class MockDemoServiceCallerTest {
         MockDemoServiceCaller mockDemoServiceCaller = new MockDemoServiceCaller( mockDemoService );
         try {
             String output = mockDemoServiceCaller.sampleRoutine( new List<String> { 'John', 'Doe'} );
-            System.assert( false, 'Exception was expected. ');
+            System.assert( false, 'Exception was expected, success was not expected ');
         } catch(Exception e) {
             System.assert( true, 'Exception was expected. ');
         }
