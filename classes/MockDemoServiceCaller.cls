@@ -40,7 +40,7 @@ public with sharing class MockDemoServiceCaller {
     public String sampleRoutine(List<String> inputs) {
         try {
             System.debug(' MockDemoServiceCaller.sampleRoutine inputs ' + JSON.serialize(inputs) );
-            List<String> outputs = mockDemoService.toUpper( new List<String> { 'John', 'Doe' } );
+            List<String> outputs = mockDemoService.toUpper( inputs );
             System.debug(' MockDemoServiceCaller.sampleRoutine outputs ' + JSON.serialize(outputs) );
             String output = mockDemoService.concat( outputs );
             System.debug(' MockDemoServiceCaller.sampleRoutine output ' + output );
