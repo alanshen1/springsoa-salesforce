@@ -1,0 +1,16 @@
+<!--
+ - Created by spring4 on 25-10-2019.
+ -->
+
+<aura:component description="HighlightDOM">
+    <ltng:require styles="{!$Resource.jqueryUI + '/jquery-ui-1.12.1/jquery-ui.min.css'}"
+                  scripts="{! join(',',
+                            $Resource.jQuery,
+                            $Resource.jqueryUI + '/jquery-ui-1.12.1/jquery-ui.js')}"
+
+    />
+
+    <lightning:button variant="brand" label="Highlight" onclick="{!c.highlight}" />
+    <span style="margin: 30px;" id="toggle"> Notification</span>
+
+</aura:component>
