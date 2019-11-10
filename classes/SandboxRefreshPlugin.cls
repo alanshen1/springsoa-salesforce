@@ -1,3 +1,3 @@
 public interface SandboxRefreshPlugin {
-    void execute(SandboxRefreshTemplate sandboxRefreshTemplate);
+    String execute(SandboxRefreshTemplate sandboxRefreshTemplate);
 }
