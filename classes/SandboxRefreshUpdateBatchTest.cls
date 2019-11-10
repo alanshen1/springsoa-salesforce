@@ -5,7 +5,7 @@ public class SandboxRefreshUpdateBatchTest {
         Contact contact = new Contact(LastName = 'Test-1',Email='test@testContact.com');
         insert contact;
 
-        Lead lead = new Lead(LastName = 'Test-1',Email='test@testLead.com');
+        Lead lead = new Lead(LastName = 'Test-1',Email='test@testLead.com', Company = '123');
         insert lead;
 
         Case testCase = new Case(SuppliedEmail='test@testCaseSuppliedEmail.com');

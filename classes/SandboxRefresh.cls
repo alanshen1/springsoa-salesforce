@@ -12,10 +12,10 @@ global class SandboxRefresh implements System.SandboxPostCopy {
         if (jsonString != null) {
             String message = '';
             SandboxRefreshTemplate template = getTemplate(jsonString);
-            message += new SandboxRefreshProvisionPlugin().execute(template);
-            message += new SandboxRefreshDataCreationPlugin().execute(template);
-            message += new SandboxRefreshInvalidateEmailPlugin().execute(template);
-            message += new SandboxRefreshEncryptFieldsDataPlugin().execute(template);
+            message += '\n\n' + new SandboxRefreshProvisionPlugin().execute(template);
+            message += '\n\n' + new SandboxRefreshDataCreationPlugin().execute(template);
+            message += '\n\n' + new SandboxRefreshInvalidateEmailPlugin().execute(template);
+            message += '\n\n' + new SandboxRefreshEncryptFieldsDataPlugin().execute(template);
             System.debug( message );
         }
     }

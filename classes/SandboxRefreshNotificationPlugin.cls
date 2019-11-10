@@ -1,6 +1,6 @@
 public class SandboxRefreshNotificationPlugin implements SandboxRefreshPlugin{
     public static final String DEFAULT_EMAIL = 'cshah@forwardfinancing.com';
-    public void execute(SandboxRefreshTemplate template){
+    public String execute(SandboxRefreshTemplate template){
         System.debug('SandboxRefreshNotificationPlugin.execute template: ' + JSON.serialize(template));
         Messaging.SingleEmailMessage email = new Messaging.SingleEmailMessage();
         List<String> emailToBeSend = getEmailAddress(template);
@@ -11,7 +11,9 @@ public class SandboxRefreshNotificationPlugin implements SandboxRefreshPlugin{
             Messaging.sendEmail(new Messaging.SingleEmailMessage[] { email });
         }catch(exception e){
             System.debug('SandboxRefreshNotificationPlugin.execute : ' + e.getMessage());
+            return 'ERROR : ' + e.getMessage() + e.getStackTraceString();
         }
+        return 'SandboxRefreshNotificationPlugin.execute executed successfully ';
     }
 
     @testVisible
