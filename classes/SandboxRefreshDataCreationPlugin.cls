@@ -1,7 +1,8 @@
 public class SandboxRefreshDataCreationPlugin implements SandboxRefreshPlugin{
     public static final String REFERENCE = 'reference-';
 
-    public void execute(SandboxRefreshTemplate sandboxRefreshTemplate){
+    public String execute(SandboxRefreshTemplate sandboxRefreshTemplate){
+        String message = '';
         List<SandboxRefreshTemplate.SObjectRecord> sObjectRecords = sandboxRefreshTemplate.sObjectRecords;
         System.debug('SandboxRefreshDataCreationPlugin.execute sObjectRecords: ' + sObjectRecords);
         if(sObjectRecords!=null && sObjectRecords.size()>0){
@@ -11,13 +12,16 @@ public class SandboxRefreshDataCreationPlugin implements SandboxRefreshPlugin{
                     SObject obj = Schema.getGlobalDescribe().get(sObjectRecord.sObjectName).newSObject() ;
                     obj = populateByParameter(sObjectRecord.attributes,obj,referenceToIdMap);
                     insert obj;
-                    if(sObjectRecord.reference!=null)
+                    if(sObjectRecord.reference!=null) {
                         referenceToIdMap.put(sObjectRecord.reference,obj.id);
-                }catch (Exception e){
+                    }
+                } catch (Exception e){
+                    message += 'SandboxRefreshDataCreationPlugin.execute error ' + e.getMessage() + ' ' + e.getStackTraceString();
                     System.debug('SandboxRefreshDataCreationPlugin.execute e: ' + e.getMessage());
                 }
             }
         }
+        return message;
     }
     private static SObject populateByParameter(Map<String,String> fMap, SObject so,Map<String,String> referenceToIdMap) {
         System.debug('SandboxRefreshDataCreationPlugin.populateByParameter fMap: ' + JSON.serialize(fMap));

@@ -10,11 +10,13 @@ global class SandboxRefresh implements System.SandboxPostCopy {
         String jsonString = readStaticResource(sandboxName);
         System.debug('SandboxRefresh.runApexClass jsonString: ' + jsonString);
         if (jsonString != null) {
+            String message = '';
             SandboxRefreshTemplate template = getTemplate(jsonString);
-            new SandboxRefreshProvisionPlugin().execute(template);
-            new SandboxRefreshDataCreationPlugin().execute(template);
-            new SandboxRefreshInvalidateEmailPlugin().execute(template);
-            new SandboxRefreshEncryptFieldsDataPlugin().execute(template);
+            message += new SandboxRefreshProvisionPlugin().execute(template);
+            message += new SandboxRefreshDataCreationPlugin().execute(template);
+            message += new SandboxRefreshInvalidateEmailPlugin().execute(template);
+            message += new SandboxRefreshEncryptFieldsDataPlugin().execute(template);
+            System.debug( message );
         }
     }
 
