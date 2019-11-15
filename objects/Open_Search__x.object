@@ -112,58 +112,53 @@
         <type>Default</type>
     </actionOverrides>
     <fields>
-        <fullName>AddressAccountKey__c</fullName>
-        <description>AddressAccountKey</description>
-        <externalDeveloperName>AddressAccountKey</externalDeveloperName>
+        <fullName>Date__c</fullName>
+        <externalDeveloperName>Date</externalDeveloperName>
         <externalId>false</externalId>
-        <isFilteringDisabled>false</isFilteringDisabled>
+        <isFilteringDisabled>true</isFilteringDisabled>
         <isNameField>false</isNameField>
-        <isSortingDisabled>false</isSortingDisabled>
-        <label>AddressAccountKey</label>
-        <length>255</length>
-        <referenceTargetField>Account.Account_Key__c</referenceTargetField>
-        <referenceTo>Account</referenceTo>
-        <relationshipName>AddressAccountKey</relationshipName>
-        <type>IndirectLookup</type>
-    </fields>
-    <fields>
-        <fullName>Street__c</fullName>
-        <description>Street</description>
-        <externalDeveloperName>Street</externalDeveloperName>
-        <externalId>false</externalId>
-        <isFilteringDisabled>false</isFilteringDisabled>
-        <isNameField>false</isNameField>
-        <isSortingDisabled>false</isSortingDisabled>
-        <label>Street</label>
-        <length>255</length>
+        <isSortingDisabled>true</isSortingDisabled>
+        <label>Date</label>
+        <readOnlyProxy>true</readOnlyProxy>
         <required>false</required>
-        <type>Text</type>
-        <unique>false</unique>
+        <type>DateTime</type>
     </fields>
     <fields>
-        <fullName>ZipCode__c</fullName>
-        <description>ZipCode</description>
-        <externalDeveloperName>ZipCode</externalDeveloperName>
+        <fullName>Summary__c</fullName>
+        <externalDeveloperName>Summary</externalDeveloperName>
         <externalId>false</externalId>
-        <isFilteringDisabled>false</isFilteringDisabled>
+        <isFilteringDisabled>true</isFilteringDisabled>
         <isNameField>false</isNameField>
-        <isSortingDisabled>false</isSortingDisabled>
-        <label>ZipCode</label>
+        <isSortingDisabled>true</isSortingDisabled>
+        <label>Summary</label>
+        <length>500</length>
+        <readOnlyProxy>true</readOnlyProxy>
+        <type>LongTextArea</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Title__c</fullName>
+        <externalDeveloperName>Title</externalDeveloperName>
+        <externalId>false</externalId>
+        <isFilteringDisabled>true</isFilteringDisabled>
+        <isNameField>true</isNameField>
+        <isSortingDisabled>true</isSortingDisabled>
+        <label>Title</label>
         <length>255</length>
+        <readOnlyProxy>true</readOnlyProxy>
         <required>false</required>
         <type>Text</type>
         <unique>false</unique>
     </fields>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
-    <deploymentStatus>InDevelopment</deploymentStatus>
-    <description>Address</description>
+    <deploymentStatus>Deployed</deploymentStatus>
     <enableFeeds>false</enableFeeds>
     <enableLicensing>false</enableLicensing>
     <enableReports>false</enableReports>
-    <enableSearch>false</enableSearch>
-    <externalDataSource>ExternalDataSourceProvider</externalDataSource>
-    <externalName>Address</externalName>
-    <label>Address</label>
-    <pluralLabel>Address</pluralLabel>
+    <enableSearch>true</enableSearch>
+    <externalDataSource>Open_Search</externalDataSource>
+    <externalName>Open_Search</externalName>
+    <label>Open_Search</label>
+    <pluralLabel>Open_Search</pluralLabel>
     <searchLayouts />
 </CustomObject>
