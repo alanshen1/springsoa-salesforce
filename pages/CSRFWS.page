@@ -1,0 +1,5 @@
+<apex:page >
+ <apex:form >
+  <apex:commandButton action="{!getContent}" value="get Content"/>
+ </apex:form> 
+</apex:page>
