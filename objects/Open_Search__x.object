@@ -117,7 +117,7 @@
         <externalId>false</externalId>
         <isFilteringDisabled>true</isFilteringDisabled>
         <isNameField>false</isNameField>
-        <isSortingDisabled>true</isSortingDisabled>
+        <isSortingDisabled>false</isSortingDisabled>
         <label>Author</label>
         <length>255</length>
         <readOnlyProxy>true</readOnlyProxy>
@@ -131,7 +131,7 @@
         <externalId>false</externalId>
         <isFilteringDisabled>true</isFilteringDisabled>
         <isNameField>false</isNameField>
-        <isSortingDisabled>true</isSortingDisabled>
+        <isSortingDisabled>false</isSortingDisabled>
         <label>Date</label>
         <readOnlyProxy>true</readOnlyProxy>
         <required>false</required>
@@ -143,7 +143,7 @@
         <externalId>false</externalId>
         <isFilteringDisabled>true</isFilteringDisabled>
         <isNameField>false</isNameField>
-        <isSortingDisabled>true</isSortingDisabled>
+        <isSortingDisabled>false</isSortingDisabled>
         <label>Expiration date</label>
         <readOnlyProxy>true</readOnlyProxy>
         <required>false</required>
@@ -155,7 +155,7 @@
         <externalId>false</externalId>
         <isFilteringDisabled>true</isFilteringDisabled>
         <isNameField>false</isNameField>
-        <isSortingDisabled>true</isSortingDisabled>
+        <isSortingDisabled>false</isSortingDisabled>
         <label>Summary</label>
         <length>500</length>
         <readOnlyProxy>true</readOnlyProxy>
@@ -168,7 +168,7 @@
         <externalId>false</externalId>
         <isFilteringDisabled>true</isFilteringDisabled>
         <isNameField>true</isNameField>
-        <isSortingDisabled>true</isSortingDisabled>
+        <isSortingDisabled>false</isSortingDisabled>
         <label>Title</label>
         <length>255</length>
         <readOnlyProxy>true</readOnlyProxy>
