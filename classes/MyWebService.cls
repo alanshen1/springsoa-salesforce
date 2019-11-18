@@ -1,7 +1,11 @@
-global class MyWebService {
-    webService static Id makeContact(String lastName, Account a) {
-        Contact c = new Contact(lastName = 'Weissman', AccountId = a.Id);
-        insert c;
-        return c.id;
+public class MyWebService
+{
+    @future(callout = true)
+    public static void performRESTCallout(string recordId)
+    {
+    Account account = new Account();
+    account.Id = recordId;
+    account.Phone = '';
+    update account;
     }
 }

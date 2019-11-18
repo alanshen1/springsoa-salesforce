@@ -1,5 +1,7 @@
-<apex:page >
- <apex:form >
-  <apex:commandButton action="{!getContent}" value="get Content"/>
- </apex:form> 
+<apex:page id="MyVisualforcePage" controller="MyController"  showHeader="false">
+    <apex:pageMessages id="msgId"/>   
+    <apex:form id="MyForm">
+       <!-- <apex:inputText id="customerNm" value="{!CustomerName}"/><br/>-->
+        <apex:commandButton value="Save" action="{!save}" reRender="msgId"/>
+    </apex:form>
 </apex:page>
