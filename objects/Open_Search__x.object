@@ -201,5 +201,11 @@
     <externalName>Open Search</externalName>
     <label>Open Search</label>
     <pluralLabel>Open Search</pluralLabel>
-    <searchLayouts />
+    <searchLayouts>
+        <searchResultsAdditionalFields>Title__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>DisplayUrl</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Author__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Date__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Summary__c</searchResultsAdditionalFields>
+    </searchLayouts>
 </CustomObject>
