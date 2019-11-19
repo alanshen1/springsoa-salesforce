@@ -99,7 +99,9 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <type>Default</type>
+        <content>ExampleApp_view</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Visualforce</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
@@ -172,6 +174,19 @@
         <label>Title</label>
         <length>255</length>
         <readOnlyProxy>true</readOnlyProxy>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Test__c</fullName>
+        <externalDeveloperName>Test</externalDeveloperName>
+        <externalId>false</externalId>
+        <isFilteringDisabled>true</isFilteringDisabled>
+        <isNameField>false</isNameField>
+        <isSortingDisabled>true</isSortingDisabled>
+        <label>Test</label>
+        <length>120</length>
         <required>false</required>
         <type>Text</type>
         <unique>false</unique>

@@ -1,2 +1,2 @@
-<apex:page >
+<apex:page standardController="Open_Search__x" >
 </apex:page>
