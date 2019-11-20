@@ -3,33 +3,30 @@
  */
 
 public class FederatedResultDisplay {
-    public List<String> chosenId { get; set; }
-    public Map<String, set<Id>> idMap { get; set; }
     public List<sObject> allRecordDetail { get; set; }
-    public String linkId { get; set; }
 
     public FederatedResultDisplay() {
-        idMap = new Map<String, set<Id>>();
-        allRecordDetail = new List<sObject>();
-        chosenId = ApexPages.currentPage().getParameters().get('ids').split(',');
-        preparingData(chosenId);
-    }
-    public FederatedResultDisplay(Boolean temp) {
-        idMap = new Map<String, set<Id>>();
-        allRecordDetail = new List<sObject>();
+        String recordIds = null;
+        if(ApexPages.currentPage().getParameters() != null && ApexPages.currentPage().getParameters().get('ids') != null){
+            recordIds = ApexPages.currentPage().getParameters().get('ids');
+            preparingData(recordIds);
+        }
+    } 
+    public FederatedResultDisplay(String recordIds) {
+        preparingData(recordIds);
     }
 
     @AuraEnabled
     public static List<sObject> auraPreparingData(String strIds) {
-        Boolean isTemp = true;
-        FederatedResultDisplay obj = new FederatedResultDisplay(isTemp);
-        obj.preparingData(strIds.split(','));
-        System.debug(obj.allRecordDetail);
+        FederatedResultDisplay obj = new FederatedResultDisplay(strIds);
         return obj.allRecordDetail;
     }
 
-    public void preparingData(List<String> chosenId) {
-        for (String str : chosenId) {
+    public void preparingData(String recordIds) {
+        Map<String, set<Id>> idMap = new Map<String, set<Id>>();
+        allRecordDetail = new List<sObject>();
+
+        for (String str : recordIds.split(',')) {
             if (idMap.containsKey(str.substring(0, 3))) {
                 idMap.get(str.substring(0, 3)).add(Id.valueOf(str));
             } else {
