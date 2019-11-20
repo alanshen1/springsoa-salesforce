@@ -2,5 +2,16 @@
  - Created by spring4 on 20-11-2019.
  -->
 
-<apex:page id="FederatedView" standardController="Open_Search__x">
+<apex:page id="FederatedView" standardController="Contact" sideBar="false" >
+    <!--<apex:pageBlock mode="detail">
+        <apex:pageBlockSection columns="2">
+            <apex:outputField value="{!Open_Search__x.Title__c}"/>
+            <apex:outputField value="{!Open_Search__x.Author__c}"/>
+            <apex:outputField value="{!Open_Search__x.Summary__c}"/>
+            <apex:outputField value="{!Open_Search__x.Date__c}"/>
+            <apex:outputField value="{!Open_Search__x.Expiration_date__c}"/>
+        </apex:pageBlockSection>
+    </apex:pageBlock>-->
+    <script>
+    </script>
 </apex:page>
