@@ -3,7 +3,7 @@
     <apiVersion>47.0</apiVersion>
     <availableInTouch>false</availableInTouch>
     <confirmationTokenRequired>false</confirmationTokenRequired>
-    <label>ExampleApp_view</label>
+    <label>FederatedSearchDisplay</label>
     <packageVersions>
         <majorNumber>1</majorNumber>
         <minorNumber>7</minorNumber>

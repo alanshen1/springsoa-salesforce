@@ -1,0 +1,6 @@
+<!--
+ - Created by spring4 on 20-11-2019.
+ -->
+
+<apex:page id="FederatedView" standardController="Open_Search__x">
+</apex:page>

@@ -99,9 +99,7 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <content>ExampleApp_view</content>
-        <skipRecordTypeSelect>false</skipRecordTypeSelect>
-        <type>Visualforce</type>
+        <type>Default</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
@@ -119,7 +117,7 @@
         <externalId>false</externalId>
         <isFilteringDisabled>true</isFilteringDisabled>
         <isNameField>false</isNameField>
-        <isSortingDisabled>false</isSortingDisabled>
+        <isSortingDisabled>true</isSortingDisabled>
         <label>Author</label>
         <length>255</length>
         <readOnlyProxy>true</readOnlyProxy>
@@ -133,7 +131,7 @@
         <externalId>false</externalId>
         <isFilteringDisabled>true</isFilteringDisabled>
         <isNameField>false</isNameField>
-        <isSortingDisabled>false</isSortingDisabled>
+        <isSortingDisabled>true</isSortingDisabled>
         <label>Date</label>
         <readOnlyProxy>true</readOnlyProxy>
         <required>false</required>
@@ -145,7 +143,7 @@
         <externalId>false</externalId>
         <isFilteringDisabled>true</isFilteringDisabled>
         <isNameField>false</isNameField>
-        <isSortingDisabled>false</isSortingDisabled>
+        <isSortingDisabled>true</isSortingDisabled>
         <label>Expiration date</label>
         <readOnlyProxy>true</readOnlyProxy>
         <required>false</required>
@@ -157,7 +155,7 @@
         <externalId>false</externalId>
         <isFilteringDisabled>true</isFilteringDisabled>
         <isNameField>false</isNameField>
-        <isSortingDisabled>false</isSortingDisabled>
+        <isSortingDisabled>true</isSortingDisabled>
         <label>Summary</label>
         <length>500</length>
         <readOnlyProxy>true</readOnlyProxy>
@@ -170,7 +168,7 @@
         <externalId>false</externalId>
         <isFilteringDisabled>true</isFilteringDisabled>
         <isNameField>true</isNameField>
-        <isSortingDisabled>false</isSortingDisabled>
+        <isSortingDisabled>true</isSortingDisabled>
         <label>Title</label>
         <length>255</length>
         <readOnlyProxy>true</readOnlyProxy>
@@ -179,17 +177,16 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Test__c</fullName>
-        <externalDeveloperName>Test</externalDeveloperName>
+        <fullName>LightningURL__c</fullName>
+        <externalDeveloperName>LightningURL</externalDeveloperName>
         <externalId>false</externalId>
         <isFilteringDisabled>true</isFilteringDisabled>
         <isNameField>false</isNameField>
         <isSortingDisabled>true</isSortingDisabled>
-        <label>Test</label>
-        <length>120</length>
+        <label>LightningURL</label>
+        <readOnlyProxy>true</readOnlyProxy>
         <required>false</required>
-        <type>Text</type>
-        <unique>false</unique>
+        <type>Url</type>
     </fields>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
@@ -206,27 +203,8 @@
         <searchResultsAdditionalFields>DisplayUrl</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Author__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Date__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Expiration_date__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>LightningURL__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Summary__c</searchResultsAdditionalFields>
-        <searchResultsCustomButtons>Show_in_OT</searchResultsCustomButtons>
     </searchLayouts>
-    <webLinks>
-        <fullName>Show_in_OT</fullName>
-        <availability>online</availability>
-        <displayType>massActionButton</displayType>
-        <encodingKey>UTF-8</encodingKey>
-        <hasMenubar>false</hasMenubar>
-        <hasScrollbars>true</hasScrollbars>
-        <hasToolbar>false</hasToolbar>
-        <height>600</height>
-        <isResizable>true</isResizable>
-        <linkType>url</linkType>
-        <masterLabel>Show in OT</masterLabel>
-        <openType>newWindow</openType>
-        <position>none</position>
-        <protected>false</protected>
-        <requireRowSelection>true</requireRowSelection>
-        <showsLocation>false</showsLocation>
-        <showsStatus>false</showsStatus>
-        <url>/apex/Example</url>
-    </webLinks>
 </CustomObject>

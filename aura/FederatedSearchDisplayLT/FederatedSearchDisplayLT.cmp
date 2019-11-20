@@ -1,0 +1,20 @@
+<!--
+ - Created by spring4 on 20-11-2019.
+ -->
+
+<aura:component implements="lightning:isUrlAddressable" controller="FederatedResultDisplay" >
+    <aura:attribute name="Ids" type="String" />
+    <aura:attribute name="allData" type="Object"/>
+    <aura:attribute name="dataColumns" type="List"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+    <h1 style="font-size: x-large;">Record Details</h1>
+
+    <lightning:datatable
+            keyField="id"
+            data="{! v.allData }"
+            columns="{!v.dataColumns}"
+            maxRowSelection="{! v.maxRowSelection }"
+            onrowaction="{! c.handleRowAction }"
+            aura:id="linesTable"/>
+</aura:component>

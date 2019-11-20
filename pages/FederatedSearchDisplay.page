@@ -1,0 +1,13 @@
+<apex:page controller="FederatedResultDisplay" sideBar="false">
+    <apex:form id="idPage">
+
+        <apex:pageBlock title="Details for Federaed Search Results">
+            <apex:pageBlockTable value="{!allRecordDetail}" var="con">
+                <apex:column headerValue="Name">
+                    <apex:outputLink value="/{!con['Id']}" target="_blank">{!con['Name']}</apex:outputLink>
+                </apex:column>
+                <apex:column value="{!con['CreatedDate']}"/>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
