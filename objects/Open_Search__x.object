@@ -189,13 +189,13 @@
         <type>Url</type>
     </fields>
     <fields>
-        <fullName>RecordIds__c</fullName>
-        <externalDeveloperName>RecordIds</externalDeveloperName>
+        <fullName>bookEditor__c</fullName>
+        <externalDeveloperName>bookEditor</externalDeveloperName>
         <externalId>false</externalId>
         <isFilteringDisabled>true</isFilteringDisabled>
         <isNameField>false</isNameField>
         <isSortingDisabled>true</isSortingDisabled>
-        <label>RecordIds</label>
+        <label>bookEditor</label>
         <length>255</length>
         <readOnlyProxy>true</readOnlyProxy>
         <required>false</required>
@@ -212,5 +212,12 @@
     <externalName>Open Search</externalName>
     <label>Open Search</label>
     <pluralLabel>Open Search</pluralLabel>
-    <searchLayouts />
+    <searchLayouts>
+        <searchResultsAdditionalFields>Title__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Author__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>bookEditor__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>DisplayUrl</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>LightningURL__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Summary__c</searchResultsAdditionalFields>
+    </searchLayouts>
 </CustomObject>
