@@ -1,0 +1,7 @@
+<!--
+ - Created by spring4 on 26-11-2019.
+ -->
+
+<apex:page id="demoCRSFVF" controller="demoCRSFVFController" action="{!updateAccountName}">
+    HELLO
+</apex:page>
