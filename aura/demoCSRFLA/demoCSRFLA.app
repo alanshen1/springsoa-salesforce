@@ -3,4 +3,8 @@
  -->
 
 <aura:application description="demoCSRFLA">
+    <aura:attribute name="id" type="String"/>
+    <aura:attribute name="name" type="String"/>
+    {!v.id}
+    {!v.name}
 </aura:application>
