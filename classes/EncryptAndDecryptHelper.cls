@@ -49,9 +49,12 @@ public class EncryptAndDecryptHelper {
     }
 
     public static String processDecryption(string encryptedData, String key){
+        System.debug(' EncryptAndDecryptHelper.processDecryption key: ' + JSON.serialize(key));
         String decryptedData;
         Blob data = EncodingUtil.base64Decode(encryptedData);
-        Blob privateKey = EncodingUtil.base64Decode(key);
+        String tempKey = EncodingUtil.base64Encode(EncodingUtil.base64Decode(Blob.valueOf(key).toString()));
+        System.debug(' EncryptAndDecryptHelper.processDecryption tempKey: ' + JSON.serialize(tempKey));
+        Blob privateKey = EncodingUtil.base64Decode(tempKey);
         try{
             Blob dataToDecrypt = Crypto.decryptWithManagedIV('AES128', privateKey, data);
             decryptedData = dataToDecrypt.toString();
