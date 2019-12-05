@@ -1,0 +1,23 @@
+<!--
+ - Created by spring4 on 05-12-2019.
+ -->
+
+<aura:component description="ShowSSN" implements="flexipage:availableForRecordHome,force:hasRecordId" controller="ShowSSNController">
+    <aura:attribute type="String" name="recordId" />
+    <aura:attribute name="ssn" type="String" default=""/>
+    <aura:attribute type="String" name="key" />
+    <aura:attribute type="String" name="error" />
+    <aura:attribute type="Boolean" name="isValid" default="false" />
+    <div class="slds-box" style="background-color: #FFFFFF">
+
+        <aura:if isTrue="{!v.isValid}">
+            Last Name is : {!v.ssn}
+            <aura:set attribute="else">
+                <div style="color: #FF0000">{!v.error}</div>
+                <lightning:input name="input1" label="Enter key here" value="{!v.key}" class="slds-m-bottom--medium"/>
+                <lightning:button variant="brand" label="Show Last Name" title="Show Last Name" onclick="{! c.showSSN }" />
+            </aura:set>
+        </aura:if>
+
+    </div>
+</aura:component>

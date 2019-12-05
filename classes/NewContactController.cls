@@ -4,6 +4,10 @@
 
 public class NewContactController {
 
+    public NewContactController(ApexPages.StandardSetController controller) {
+        controller.setPageSize(10);
+    }
+    
     @AuraEnabled
     public static Contact getContact(Id accountRecordId, Id recordTypeId){
         System.debug('recordTypeId'+recordTypeId);

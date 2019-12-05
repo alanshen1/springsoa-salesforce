@@ -33,7 +33,7 @@ public class EncryptAndDecryptHelper {
                 update financeList;
             }
             if(!mailmsg.isEmpty()){
-                messaging.sendEmail(mailmsg);
+               // messaging.sendEmail(mailmsg);
             }
         }
 
@@ -52,7 +52,7 @@ public class EncryptAndDecryptHelper {
         System.debug(' EncryptAndDecryptHelper.processDecryption key: ' + JSON.serialize(key));
         String decryptedData;
         Blob data = EncodingUtil.base64Decode(encryptedData);
-        String tempKey = EncodingUtil.base64Encode(EncodingUtil.base64Decode(Blob.valueOf(key).toString()));
+        String tempKey = EncodingUtil.base64Decode(key).toString();
         System.debug(' EncryptAndDecryptHelper.processDecryption tempKey: ' + JSON.serialize(tempKey));
         Blob privateKey = EncodingUtil.base64Decode(tempKey);
         try{

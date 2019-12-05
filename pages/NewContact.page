@@ -1,0 +1,15 @@
+<apex:page standardController="Contact" recordSetVar="contactRecord" tabStyle="Contact" extensions="NewContactController">
+    <apex:includeLightning />
+    Test
+    <div id="Con" />
+    <script>
+    $Lightning.use("c:NewContactApplication", function() {
+        $Lightning.createComponent(
+            "c:NewContact",
+            {},
+            "Con",
+            function(cmp) {
+            });
+    });
+    </script>
+</apex:page>
