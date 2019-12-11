@@ -1,18 +1,18 @@
-public with sharing class ActionForProcessBuilder {
+public class ActionForProcessBuilder {
 
-    @InvocableMethod(label='Do Action')
-    public static void doAction(Request[] requests) {
+    @InvocableMethod(label='LogRequest Do Action')
+    public static void doAction(LogRequest[] requests) {
         System.debug('Its working');
     }
 
-    public with sharing class Request {
+    public class LogRequest {
         @InvocableVariable(label='Record ID' required=true)
-        public Id recordId;
+        public Id recordIdLogRequest;
 
         @InvocableVariable(label='Parent ID' required=true)
-        public Id parentId;
+        public Id parentIdLogRequest;
 
         @InvocableVariable(label='Adjusted Due Date' required=false)
-        public Date adjustedDueDate;
+        public Date adjustedDueDateLogRequest;
     }
 }
