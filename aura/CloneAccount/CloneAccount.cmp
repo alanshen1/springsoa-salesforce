@@ -1,7 +1,3 @@
-<!--
- - Created by Spring7 on 9/19/2019.
- -->
-
 <aura:component description="CloneAccount" extends="c:CloneComponentBase" implements="force:lightningQuickActionWithoutHeader,lightning:actionOverride,force:hasRecordId">
     <aura:set attribute="sObjectApiName" value="Account" />
     <aura:set attribute="fieldSetName" value="CloneAccount"/>
