@@ -4,8 +4,7 @@
 
 public with sharing class HttpService {
 
-    @TestVisible
-    private static String callout(String endPoint, String httpMethod, Map<String, String> headers, String body, Integer timeout) {
+    public static String callout(String endPoint, String httpMethod, Map<String, String> headers, String body, Integer timeout) {
         Http http = new Http();
         HttpRequest httpRequest = new HttpRequest();
         httpRequest.setTimeout(timeout);
