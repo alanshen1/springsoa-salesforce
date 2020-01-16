@@ -558,6 +558,12 @@
         </filters>
         <label>New This Week</label>
     </listViews>
+    <validationRules>
+        <fullName>Account_Name_must_be_SpringSOA</fullName>
+        <active>true</active>
+        <errorConditionFormula>Account.Name   &lt;&gt;  'SpringSOA'</errorConditionFormula>
+        <errorMessage>Account name must be SpringSOA</errorMessage>
+    </validationRules>
     <webLinks>
         <fullName>New_1</fullName>
         <availability>online</availability>
