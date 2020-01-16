@@ -3,6 +3,5 @@
  -->
 
 <apex:page id="SameSite">
-    <iframe src="https://general-service-dev.herokuapp.com/storeCookies.html" width="600px"></iframe>
     <iframe src="https://general-service-dev.herokuapp.com/displayCookies.html" width="600px"></iframe>
 </apex:page>
