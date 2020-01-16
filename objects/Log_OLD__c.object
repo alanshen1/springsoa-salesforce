@@ -140,179 +140,58 @@
         <type>Default</type>
     </actionOverrides>
     <fields>
-        <fullName>ErrorMessage__c</fullName>
-        <description>Error Message</description>
+        <fullName>Email_Body__c</fullName>
         <externalId>false</externalId>
-        <label>ErrorMessage</label>
-        <length>131072</length>
-        <trackTrending>false</trackTrending>
-        <type>LongTextArea</type>
-        <visibleLines>3</visibleLines>
-    </fields>
-    <fields>
-        <fullName>ErrorTypeEqualsFilteredErrorType__c</fullName>
-        <externalId>false</externalId>
-        <formula>Filtered_Error_Type_Text__c = ErrorType__c</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>ErrorTypeEqualsFilteredErrorType</label>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>ErrorType__c</fullName>
-        <description>Type of error - e.g. limit error</description>
-        <externalId>false</externalId>
-        <label>ErrorType</label>
-        <length>100</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Filtered_Error_Type_Text__c</fullName>
-        <externalId>false</externalId>
-        <label>Filtered_Error_Type_Text</label>
-        <length>100</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Filtererd_Error_Types__c</fullName>
-        <externalId>false</externalId>
-        <label>Filtererd_Error_Types</label>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Picklist</type>
-        <valueSet>
-            <restricted>true</restricted>
-            <valueSetDefinition>
-                <sorted>false</sorted>
-                <value>
-                    <fullName>All</fullName>
-                    <default>false</default>
-                    <label>All</label>
-                </value>
-                <value>
-                    <fullName>GENERIC</fullName>
-                    <default>false</default>
-                    <label>GENERIC</label>
-                </value>
-                <value>
-                    <fullName>LIMITS</fullName>
-                    <default>false</default>
-                    <label>LIMITS</label>
-                </value>
-                <value>
-                    <fullName>LAST_MODIFIED_BY_ERROR</fullName>
-                    <default>false</default>
-                    <label>LAST_MODIFIED_BY_ERROR</label>
-                </value>
-                <value>
-                    <fullName>CREATED_BY_ERROR</fullName>
-                    <default>false</default>
-                    <label>CREATED_BY_ERROR</label>
-                </value>
-                <value>
-                    <fullName>NA</fullName>
-                    <default>false</default>
-                    <label>NA</label>
-                </value>
-            </valueSetDefinition>
-        </valueSet>
-    </fields>
-    <fields>
-        <fullName>Payload__c</fullName>
-        <externalId>false</externalId>
-        <label>Payload</label>
+        <label>Email Body</label>
         <length>32768</length>
         <trackTrending>false</trackTrending>
-        <type>LongTextArea</type>
-        <visibleLines>3</visibleLines>
+        <type>Html</type>
+        <visibleLines>10</visibleLines>
     </fields>
     <fields>
-        <fullName>ProcessType__c</fullName>
-        <description>Type of process  (e.g. AD, Renewal, Etc.)</description>
+        <fullName>From_Email__c</fullName>
         <externalId>false</externalId>
-        <label>ProcessType</label>
-        <length>100</length>
+        <label>From Email</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Subject__c</fullName>
+        <externalId>false</externalId>
+        <label>Subject</label>
+        <length>255</length>
         <required>false</required>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Source__c</fullName>
-        <externalId>false</externalId>
-        <label>Source</label>
-        <length>50</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>StackTrace__c</fullName>
-        <externalId>false</externalId>
-        <label>Stack Trace</label>
-        <length>131072</length>
-        <trackTrending>false</trackTrending>
-        <type>LongTextArea</type>
-        <visibleLines>3</visibleLines>
-    </fields>
-    <fields>
-        <fullName>TrackingHistory__c</fullName>
-        <description>Tracking History from Checkpoint Manager</description>
-        <externalId>false</externalId>
-        <label>TrackingHistory</label>
-        <length>131072</length>
-        <trackTrending>false</trackTrending>
-        <type>LongTextArea</type>
-        <visibleLines>3</visibleLines>
-    </fields>
-    <fields>
-        <fullName>User__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <description>Created By User</description>
-        <externalId>false</externalId>
-        <label>User</label>
-        <referenceTo>User</referenceTo>
-        <relationshipName>Logs</relationshipName>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Lookup</type>
     </fields>
     <allowInChatterGroups>false</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
-    <description>History of Logs - mostly used for error logs</description>
     <enableActivities>false</enableActivities>
     <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>
     <enableHistory>false</enableHistory>
     <enableLicensing>false</enableLicensing>
-    <enableReports>true</enableReports>
+    <enableReports>false</enableReports>
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
-    <label>Log</label>
+    <label>Log Old</label>
     <nameField>
         <displayFormat>Log-{0000}</displayFormat>
         <label>Log Number</label>
         <type>AutoNumber</type>
     </nameField>
-    <pluralLabel>Logs</pluralLabel>
+    <pluralLabel>Logs Old</pluralLabel>
     <searchLayouts />
     <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>
     <listViews>
         <fullName>All</fullName>
-        <columns>NAME</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>CREATEDBY_USER</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>

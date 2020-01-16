@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>AccountOwnerChangeCheckEnabled__c</fullName>
+        <defaultValue>true</defaultValue>
+        <description>This settings controls if account trigger runs query to check if account team members are updated or not - when there is owner change.</description>
+        <externalId>false</externalId>
+        <label>Account Owner Change Check Enabled</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CheckptMgrEnabled__c</fullName>
+        <defaultValue>true</defaultValue>
+        <description>This setting determines if checkpoint manager is enabled or disabled</description>
+        <externalId>false</externalId>
+        <label>CheckptMgrEnabled</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CheckptMgrRemainingCPUThresholdPct__c</fullName>
+        <defaultValue>5</defaultValue>
+        <description>This setting will determine if checkpoint manager will throw exception or not upon the limit threshold.</description>
+        <externalId>false</externalId>
+        <label>CheckptMgrRemainingCPUThresholdPct</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>CheckptMgrRemainingQueryRowsThresholdPct__c</fullName>
+        <defaultValue>10</defaultValue>
+        <description>This setting determines number of query rows left in current transaction and throws exception if it is below threshold. 
+
+To disable, make the threshold 0.</description>
+        <externalId>false</externalId>
+        <label>CheckptMgrRemainingQueryRowsThresholdPct</label>
+        <precision>18</precision>
+        <required>true</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>CheckptMgrRemainingSOQLThresholdPct__c</fullName>
+        <defaultValue>5</defaultValue>
+        <description>This setting will check how many SOQL left in current transaction and raise an exception if it is below the threshold.
+
+Note: to disable this setting, change the remaining threshold to 0.</description>
+        <externalId>false</externalId>
+        <label>CheckptMgrRemainingSOQLThresholdPct</label>
+        <precision>18</precision>
+        <required>true</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>CheckptMgrRemainingSOSLThresholdPct__c</fullName>
+        <defaultValue>5</defaultValue>
+        <description>This setting determines number of query rows left in current transaction and throws exception if it is below threshold.
+
+To disable, make the threshold 0.</description>
+        <externalId>false</externalId>
+        <label>CheckptMgrRemainingSOSLThresholdPct</label>
+        <precision>18</precision>
+        <required>true</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>CheckptMgrThrowLimitExceptionEnabled__c</fullName>
+        <defaultValue>true</defaultValue>
+        <description>This setting will determine if checkpoint manager will throw exception or not upon the limit threshold.</description>
+        <externalId>false</externalId>
+        <label>CheckptMgrThrowLimitExceptionEnabled</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CheckptMgrTracingEnabled__c</fullName>
+        <defaultValue>true</defaultValue>
+        <description>This setting will enable or disable the tracing inside the check point manager,.</description>
+        <externalId>false</externalId>
+        <label>CheckptMgrTracingEnabled</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>LogMgrRemainingHeapSizeThresholdPct__c</fullName>
+        <externalId>false</externalId>
+        <label>LogMgrRemainingHeapSizeThresholdPct</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>LoggingMgrEnabled__c</fullName>
+        <defaultValue>true</defaultValue>
+        <description>This setting determines if logging manager is enabled or disabled</description>
+        <externalId>false</externalId>
+        <label>LoggingMgrEnabled</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>PlatformCacheMgrEnabled__c</fullName>
+        <defaultValue>true</defaultValue>
+        <description>This setting determines if platform cache manager is enabled or disabled</description>
+        <externalId>false</externalId>
+        <label>PlatformCacheMgrEnabled</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Raise_Project_Events__c</fullName>
+        <defaultValue>true</defaultValue>
+        <externalId>false</externalId>
+        <label>Raise Project Events</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>StatisticsMgrEnabled__c</fullName>
+        <defaultValue>true</defaultValue>
+        <description>This setting determines if statistics manager is enabled or disabled</description>
+        <externalId>false</externalId>
+        <label>StatisticsMgrEnabled</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>WarningEnabled__c</fullName>
+        <defaultValue>true</defaultValue>
+        <description>This setting is used to calculate statistics and log a warning if a certain limit is crossed.</description>
+        <externalId>false</externalId>
+        <label>WarningEnabled</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>WarningThresholdPercent__c</fullName>
+        <defaultValue>10</defaultValue>
+        <description>If this value is crossed then a warning will be logged.</description>
+        <externalId>false</externalId>
+        <label>WarningThresholdPercent</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <customSettingsType>List</customSettingsType>
+    <description>This custom setting is created to store value for all system level options. For now storing : CheckpointManager, PlatformCacheManager, etc..</description>
+    <enableFeeds>false</enableFeeds>
+    <label>System Settings</label>
+    <visibility>Public</visibility>
+</CustomObject>
