@@ -1,11 +1,3 @@
-/**
- * Created by rr245546 on 6/20/2017.
- */
-
-/**
- * adding without sharing as given user might not have access to logging table
- * however, still should be able to write/read log data
- */
 public without sharing class LoggingManager implements ILoggingManager {
 
     @TestVisible
@@ -45,7 +37,7 @@ public without sharing class LoggingManager implements ILoggingManager {
             insert logS;
         }
     }
-    
+
     public void logMessage(Log.ProcessType processType, Exception ex) {
         try {
             Log log = new Log(processType, ex);
@@ -54,7 +46,16 @@ public without sharing class LoggingManager implements ILoggingManager {
             System.debug(LoggingLevel.ERROR, 'Error calling logMessage in logging manager ' + e.getMessage() );
         }
     }
-    
+
+    /*public void logMessage(Log.ProcessType processType, Exception ex) {
+        try {
+            Log log = new Log(processType, ex);
+            logMessage( log );
+        } catch(Exception e) {
+            System.debug(LoggingLevel.ERROR, 'Error calling logMessage in logging manager ' + e.getMessage() );
+        }
+    }*/
+
     public void logMessage(Log.ProcessType processType, Exception ex, String source,String stackTrace) {
         try {
             Log log = new Log(processType, ex, source,stackTrace);
@@ -68,6 +69,20 @@ public without sharing class LoggingManager implements ILoggingManager {
         try {
             Log log = new Log(processType, ex, errorMessage);
             logMessage( log );
+        } catch(Exception e) {
+            System.debug(LoggingLevel.ERROR, 'Error calling logMessage in logging manager ' + e.getMessage() );
+        }
+    }
+
+    public void logMessage(Log.ProcessType processType, String message,String errorType) {
+        try {
+            Log__c logS = new Log__c(
+                    ErrorMessage__c=message,
+                    ErrorType__c=errorType,
+                    ProcessType__c=String.valueOf(processType),
+                    User__c=UserInfo.getUserId()
+            );
+            insert logS;
         } catch(Exception e) {
             System.debug(LoggingLevel.ERROR, 'Error calling logMessage in logging manager ' + e.getMessage() );
         }
@@ -138,14 +153,14 @@ public without sharing class LoggingManager implements ILoggingManager {
             String errorType='GENERIC';
             String payload=null;
             Log__c logS = new Log__c(
-                ErrorMessage__c=logRequest.errorMessage,
-                trackingHistory__c=trackingHistory,
-                ErrorType__c=errorType,
-                ProcessType__c=logRequest.processType,
-                User__c=UserInfo.getUserId(),
-                Payload__c=logRequest.payload,
-             	Source__c = String.isNotBlank(logRequest.source)?logRequest.source:'',
-                StackTrace__c  = String.isNotBlank(logRequest.stackTrace)?logRequest.stackTrace:''
+                    ErrorMessage__c=logRequest.errorMessage,
+                    trackingHistory__c=trackingHistory,
+                    ErrorType__c=errorType,
+                    ProcessType__c=logRequest.processType,
+                    User__c=UserInfo.getUserId(),
+                    Payload__c=logRequest.payload,
+                    Source__c = String.isNotBlank(logRequest.source)?logRequest.source:'',
+                    StackTrace__c  = String.isNotBlank(logRequest.stackTrace)?logRequest.stackTrace:''
             );
             insert logS;
         }
@@ -165,7 +180,7 @@ public without sharing class LoggingManager implements ILoggingManager {
             System.debug('LoggingManager.invocableLogMessage logRequest: ' + JSON.serialize(logRequest));
             logMessage(logRequest);
         } catch(Exception e) {
-            System.debug('LoggingManager.invocableLogMessage e: ' + JSON.serialize(e)); 
+            System.debug('LoggingManager.invocableLogMessage e: ' + JSON.serialize(e));
             System.debug(LoggingLevel.ERROR, 'Error calling logMessage in logging manager ' + e.getMessage() );
         }
     }
@@ -179,10 +194,10 @@ public without sharing class LoggingManager implements ILoggingManager {
 
         @InvocableVariable(required=false)
         public String payload;
-        
+
         @InvocableVariable(required=false)
         public String source;
-        
+
         @InvocableVariable(required=false)
         public String stackTrace;
     }
