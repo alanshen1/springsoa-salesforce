@@ -475,6 +475,16 @@
         <fullName>Title</fullName>
         <trackFeedHistory>false</trackFeedHistory>
     </fields>
+    <fields>
+        <fullName>Company__c</fullName>
+        <externalId>false</externalId>
+        <label>Company</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <enableFeeds>true</enableFeeds>
     <enableHistory>false</enableHistory>
@@ -560,7 +570,7 @@
     </listViews>
     <validationRules>
         <fullName>Account_Name_must_be_SpringSOA</fullName>
-        <active>true</active>
+        <active>false</active>
         <errorConditionFormula>Account.Name   &lt;&gt;  'SpringSOA'</errorConditionFormula>
         <errorMessage>Account name must be SpringSOA</errorMessage>
     </validationRules>

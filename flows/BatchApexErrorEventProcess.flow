@@ -293,7 +293,7 @@
         <dataType>String</dataType>
         <expression>{!$Organization.Name}</expression>
     </formulas>
-    <interviewLabel>BatchApexErrorEventProcess-2_InterviewLabel</interviewLabel>
+    <interviewLabel>BatchApexErrorEventProcess-3_InterviewLabel</interviewLabel>
     <label>BatchApexErrorEventProcess</label>
     <loops>
         <name>eventContextCheckLoop</name>
@@ -434,7 +434,7 @@
         <outputReference>myVariable_event_context_collection</outputReference>
     </recordLookups>
     <startElementReference>myEventContextRecordLookup</startElementReference>
-    <status>Active</status>
+    <status>Obsolete</status>
     <textTemplates>
         <description>text template for when multiple records are records found</description>
         <name>multipleRecordsFoundTextTemplate</name>

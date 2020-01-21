@@ -11,7 +11,7 @@ public class Log {
         NA, LIMITS, GENERIC, LAST_MODIFIED_BY_ERROR, CREATED_BY_ERROR
     }
     public enum ProcessType {
-        NA, ActiveDisclosureFacade, Renewal, Warning
+        NA, ActiveDisclosureFacade, Renewal, Warning, Error
     }
 
     public Log() {
