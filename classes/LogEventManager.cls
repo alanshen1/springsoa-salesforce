@@ -4,6 +4,7 @@ public class LogEventManager {
         loggingEvent.Error_Message__c = errorMessage;
         loggingEvent.ProcessType__c = processType;
         loggingEvent.Source__c = source;
+        loggingEvent.User__c = UserInfo.getUserId();
         EventBus.publish(loggingEvent);
     }
 }

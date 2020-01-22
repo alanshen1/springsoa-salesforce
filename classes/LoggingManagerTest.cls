@@ -35,16 +35,16 @@ private class LoggingManagerTest {
             Integer exceptionNumber = 1/0;
         }catch(Exception e){
             ILoggingManager iloggingManager = ServiceFactory.getInstance().getLoggingManagerInstance();
-            iloggingManager.logMessage(Log.ProcessType.ActiveDisclosureFacade,e);
-            iloggingManager.logMessage(Log.ProcessType.ActiveDisclosureFacade,e,'Apex',e.getStackTraceString());
-            iloggingManager.logMessage(Log.ProcessType.ActiveDisclosureFacade,e,e.getMessage());
-            iloggingManager.logMessage(Log.ProcessType.ActiveDisclosureFacade,e,e.getMessage(),'Apex',e.getStackTraceString());
-            iloggingManager.logMessage(Log.ProcessType.ActiveDisclosureFacade,e,e.getMessage(),JSON.serialize('Test'));
-            iloggingManager.logMessage(Log.ProcessType.ActiveDisclosureFacade,e,e.getMessage(),JSON.serialize('Test'),'Apex',e.getStackTraceString());
-            iloggingManager.logMessage(Log.ProcessType.ActiveDisclosureFacade,e,e.getMessage(), new CustomClass());
-            iloggingManager.logMessage(Log.ProcessType.ActiveDisclosureFacade,e,e.getMessage(), new CustomClass(),'Apex',e.getStackTraceString());
-            iloggingManager.logMessage(Log.ProcessType.ActiveDisclosureFacade,e,e.getMessage(),new List<String>{'Test'});
-            iloggingManager.logMessage(Log.ProcessType.ActiveDisclosureFacade,e,e.getMessage(),new List<String>{'Test'},'Apex',e.getStackTraceString());
+            iloggingManager.logMessage(Log.ProcessType.Warning,e);
+            iloggingManager.logMessage(Log.ProcessType.Warning,e,'Apex',e.getStackTraceString());
+            iloggingManager.logMessage(Log.ProcessType.Warning,e,e.getMessage());
+            iloggingManager.logMessage(Log.ProcessType.Warning,e,e.getMessage(),'Apex',e.getStackTraceString());
+            iloggingManager.logMessage(Log.ProcessType.Warning,e,e.getMessage(),JSON.serialize('Test'));
+            iloggingManager.logMessage(Log.ProcessType.Warning,e,e.getMessage(),JSON.serialize('Test'),'Apex',e.getStackTraceString());
+            iloggingManager.logMessage(Log.ProcessType.Warning,e,e.getMessage(), new CustomClass());
+            iloggingManager.logMessage(Log.ProcessType.Warning,e,e.getMessage(), new CustomClass(),'Apex',e.getStackTraceString());
+            iloggingManager.logMessage(Log.ProcessType.Warning,e,e.getMessage(),new List<String>{'Test'});
+            iloggingManager.logMessage(Log.ProcessType.Warning,e,e.getMessage(),new List<String>{'Test'},'Apex',e.getStackTraceString());
         }
         
         Test.stopTest();

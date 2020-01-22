@@ -47,15 +47,6 @@ public without sharing class LoggingManager implements ILoggingManager {
         }
     }
 
-    /*public void logMessage(Log.ProcessType processType, Exception ex) {
-        try {
-            Log log = new Log(processType, ex);
-            logMessage( log );
-        } catch(Exception e) {
-            System.debug(LoggingLevel.ERROR, 'Error calling logMessage in logging manager ' + e.getMessage() );
-        }
-    }*/
-
     public void logMessage(Log.ProcessType processType, Exception ex, String source,String stackTrace) {
         try {
             Log log = new Log(processType, ex, source,stackTrace);
@@ -65,24 +56,11 @@ public without sharing class LoggingManager implements ILoggingManager {
         }
     }
 
+
     public void logMessage(Log.ProcessType processType, Exception ex, String errorMessage) {
         try {
             Log log = new Log(processType, ex, errorMessage);
             logMessage( log );
-        } catch(Exception e) {
-            System.debug(LoggingLevel.ERROR, 'Error calling logMessage in logging manager ' + e.getMessage() );
-        }
-    }
-
-    public void logMessage(Log.ProcessType processType, String message,String errorType) {
-        try {
-            Log__c logS = new Log__c(
-                    ErrorMessage__c=message,
-                    ErrorType__c=errorType,
-                    ProcessType__c=String.valueOf(processType),
-                    User__c=UserInfo.getUserId()
-            );
-            insert logS;
         } catch(Exception e) {
             System.debug(LoggingLevel.ERROR, 'Error calling logMessage in logging manager ' + e.getMessage() );
         }
@@ -96,6 +74,7 @@ public without sharing class LoggingManager implements ILoggingManager {
             System.debug(LoggingLevel.ERROR, 'Error calling logMessage in logging manager ' + e.getMessage() );
         }
     }
+
 
     public void logMessage(Log.ProcessType processType, Exception ex, String errorMessage, Object parameter) {
         try {
@@ -115,6 +94,8 @@ public without sharing class LoggingManager implements ILoggingManager {
         }
     }
 
+
+
     public void logMessage(Log.ProcessType processType, Exception ex, String errorMessage,List<Object> parameters) {
         try {
             Log log = new Log(processType, ex, errorMessage,parameters);
@@ -132,6 +113,33 @@ public without sharing class LoggingManager implements ILoggingManager {
             System.debug(LoggingLevel.ERROR, 'Error calling logMessage in logging manager ' + e.getMessage() );
         }
     }
+
+
+
+    public void logMessage(Log.ProcessType processType, String message,String errorType, String userId) {
+        try {
+            if( SystemSettings__c.getInstance('default') != null && SystemSettings__c.getInstance('default').LoggingMgrEnabled__c != null  && SystemSettings__c.getInstance('default').LoggingMgrEnabled__c == true ){
+                String trackingHistory = ServiceFactory.getInstance().getCheckpointManagerInstance().getCheckpointDetail();
+                Log__c logS = new Log__c(
+                        ErrorMessage__c=message,
+                        ErrorType__c=errorType,
+                        ProcessType__c=String.valueOf(processType),
+                        TrackingHistory__c = trackingHistory,
+                        User__c=userId
+                );
+                insert logS;
+            }
+
+        } catch(Exception e) {
+            System.debug(LoggingLevel.ERROR, 'Error calling logMessage in logging manager ' + e.getMessage() );
+        }
+    }
+
+    public void logMessage(Log.ProcessType processType, String message,String errorType) {
+        logMessage(processType, message,errorType,UserInfo.getUserId());
+    }
+
+
 
     @TestVisible
     private Log checkHeapSize(Log log) {
@@ -157,10 +165,10 @@ public without sharing class LoggingManager implements ILoggingManager {
                     trackingHistory__c=trackingHistory,
                     ErrorType__c=errorType,
                     ProcessType__c=logRequest.processType,
-                    User__c=UserInfo.getUserId(),
                     Payload__c=logRequest.payload,
                     Source__c = String.isNotBlank(logRequest.source)?logRequest.source:'',
-                    StackTrace__c  = String.isNotBlank(logRequest.stackTrace)?logRequest.stackTrace:''
+                    StackTrace__c  = String.isNotBlank(logRequest.stackTrace)?logRequest.stackTrace:'',
+                    User__c = String.isNotBlank(logRequest.userId)?logRequest.userId: UserInfo.getUserId()
             );
             insert logS;
         }
@@ -200,5 +208,8 @@ public without sharing class LoggingManager implements ILoggingManager {
 
         @InvocableVariable(required=false)
         public String stackTrace;
+
+        @InvocableVariable(required=false)
+        public String userId;
     }
 }
