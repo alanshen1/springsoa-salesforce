@@ -116,7 +116,7 @@ public without sharing class LoggingManager implements ILoggingManager {
 
 
 
-    public void logMessage(Log.ProcessType processType, String message,String errorType, String userId) {
+    public void logMessage(Log.ProcessType processType, String message,String errorType, String source,String userId) {
         try {
             if( SystemSettings__c.getInstance('default') != null && SystemSettings__c.getInstance('default').LoggingMgrEnabled__c != null  && SystemSettings__c.getInstance('default').LoggingMgrEnabled__c == true ){
                 String trackingHistory = ServiceFactory.getInstance().getCheckpointManagerInstance().getCheckpointDetail();
@@ -125,6 +125,7 @@ public without sharing class LoggingManager implements ILoggingManager {
                         ErrorType__c=errorType,
                         ProcessType__c=String.valueOf(processType),
                         TrackingHistory__c = trackingHistory,
+                        Source__c = source,
                         User__c=userId
                 );
                 insert logS;
@@ -135,8 +136,8 @@ public without sharing class LoggingManager implements ILoggingManager {
         }
     }
 
-    public void logMessage(Log.ProcessType processType, String message,String errorType) {
-        logMessage(processType, message,errorType,UserInfo.getUserId());
+    public void logMessage(Log.ProcessType processType, String message,String errorType,String source) {
+        logMessage(processType, message,errorType,source,UserInfo.getUserId());
     }
 
 
