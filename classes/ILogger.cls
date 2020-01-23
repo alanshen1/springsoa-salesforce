@@ -1,3 +1,6 @@
 public interface ILogger {
-    void logMessage( List<LogMessage> logMessages);
+
+    void logMessage(LogMessage logMessage);
+    void logMessages(List<LogMessage> logMessages);
+
 }

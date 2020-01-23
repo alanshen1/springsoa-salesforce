@@ -180,10 +180,10 @@
         <fullName>Payload__c</fullName>
         <externalId>false</externalId>
         <label>Payload</label>
-        <length>32768</length>
+        <length>131072</length>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
-        <visibleLines>3</visibleLines>
+        <visibleLines>5</visibleLines>
     </fields>
     <fields>
         <fullName>Process_Type__c</fullName>
@@ -247,13 +247,13 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
-    <label>LogMessage</label>
+    <label>Log Message</label>
     <nameField>
         <displayFormat>Log-{0000}</displayFormat>
         <label>LogMessage Number</label>
         <type>AutoNumber</type>
     </nameField>
-    <pluralLabel>LogMessages</pluralLabel>
+    <pluralLabel>Log Messages</pluralLabel>
     <searchLayouts />
     <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>

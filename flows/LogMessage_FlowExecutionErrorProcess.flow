@@ -10,7 +10,7 @@
         <inputParameters>
             <name>emailSubject</name>
             <value>
-                <stringValue>Salesforce FlowExecutionErrorProcess  process didn&apos;t start: No matching records found</stringValue>
+                <stringValue>Salesforce LogMessage FlowExecutionErrorProcess process didn&apos;t start: No matching records found</stringValue>
             </value>
         </inputParameters>
         <inputParameters>
@@ -36,7 +36,7 @@
         <inputParameters>
             <name>emailSubject</name>
             <value>
-                <stringValue>Salesforce FlowExecutionErrorProcess  process didn&apos;t start: Multiple matching records found</stringValue>
+                <stringValue>Salesforce LogMessage FlowExecutionErrorProcess process didn&apos;t start: Multiple matching records found</stringValue>
             </value>
         </inputParameters>
         <inputParameters>
@@ -56,14 +56,14 @@
         <processMetadataValues>
             <name>apexSelection</name>
             <value>
-                <stringValue>Log Message</stringValue>
+                <stringValue>LogMessage</stringValue>
             </value>
         </processMetadataValues>
         <name>myRule_1_A1</name>
-        <label>Create Log Message</label>
+        <label>Log message using Log Message</label>
         <locationX>100</locationX>
         <locationY>200</locationY>
-        <actionName>LoggingManager</actionName>
+        <actionName>Logger</actionName>
         <actionType>apex</actionType>
         <inputParameters>
             <processMetadataValues>
@@ -75,49 +75,7 @@
             <processMetadataValues>
                 <name>isRequired</name>
                 <value>
-                    <booleanValue>true</booleanValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideLabel</name>
-                <value>
-                    <stringValue>processType</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>maxOccurs</name>
-                <value>
-                    <numberValue>0.0</numberValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>objectType</name>
-                <value>
-                    <stringValue></stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>rightHandSideType</name>
-                <value>
-                    <stringValue>String</stringValue>
-                </value>
-            </processMetadataValues>
-            <name>processType</name>
-            <value>
-                <stringValue>Flow</stringValue>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <processMetadataValues>
-                <name>dataType</name>
-                <value>
-                    <stringValue>String</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>isRequired</name>
-                <value>
-                    <booleanValue>true</booleanValue>
+                    <booleanValue>false</booleanValue>
                 </value>
             </processMetadataValues>
             <processMetadataValues>
@@ -129,7 +87,7 @@
             <processMetadataValues>
                 <name>maxOccurs</name>
                 <value>
-                    <numberValue>0.0</numberValue>
+                    <numberValue>1.0</numberValue>
                 </value>
             </processMetadataValues>
             <processMetadataValues>
@@ -147,6 +105,90 @@
             <name>errorMessage</name>
             <value>
                 <elementReference>myVariable_myEvent.ErrorMessage</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>String</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>userId</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>maxOccurs</name>
+                <value>
+                    <numberValue>1.0</numberValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>objectType</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Event</stringValue>
+                </value>
+            </processMetadataValues>
+            <name>userId</name>
+            <value>
+                <elementReference>myVariable_myEvent.UserId</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>String</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>stackTrace</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>maxOccurs</name>
+                <value>
+                    <numberValue>1.0</numberValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>objectType</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Event</stringValue>
+                </value>
+            </processMetadataValues>
+            <name>stackTrace</name>
+            <value>
+                <elementReference>myVariable_myEvent.ElementApiName</elementReference>
             </value>
         </inputParameters>
         <inputParameters>
@@ -283,6 +325,7 @@
             <label>No Criteria</label>
         </rules>
     </decisions>
+    <description>Log Message from Logger</description>
     <formulas>
         <name>formula_myRule_1</name>
         <dataType>Boolean</dataType>
@@ -293,8 +336,8 @@
         <dataType>String</dataType>
         <expression>{!$Organization.Name}</expression>
     </formulas>
-    <interviewLabel>FlowExecutionErrorProcess-1_InterviewLabel</interviewLabel>
-    <label>FlowExecutionErrorProcess</label>
+    <interviewLabel>LogMessage_FlowExecutionErrorProcess-2_InterviewLabel</interviewLabel>
+    <label>LogMessage FlowExecutionErrorProcess</label>
     <loops>
         <name>eventContextCheckLoop</name>
         <label>ContextCheckLoop</label>
@@ -434,13 +477,13 @@
         <outputReference>myVariable_event_context_collection</outputReference>
     </recordLookups>
     <startElementReference>myEventContextRecordLookup</startElementReference>
-    <status>Obsolete</status>
+    <status>Active</status>
     <textTemplates>
         <description>text template for when multiple records are records found</description>
         <name>multipleRecordsFoundTextTemplate</name>
         <text>Hello {!OrganizationName} Admin, 
 
-The FlowExecutionErrorProcess  process is configured to start when a Flow Execution Error Event platform event message occurs. A Flow Execution Error Event message occurred, but the process didn&apos;t start because multiple records in your org match the values specified in the process&apos;s Object node.
+The LogMessage FlowExecutionErrorProcess process is configured to start when a Flow Execution Error Event platform event message occurs. A Flow Execution Error Event message occurred, but the process didn&apos;t start because multiple records in your org match the values specified in the process&apos;s Object node.
 
 
 
@@ -454,7 +497,7 @@ Salesforce Process Automation</text>
         <name>noRecordsFoundTextTemplate</name>
         <text>Hello {!OrganizationName} Admin, 
 
-The FlowExecutionErrorProcess  process is configured to start when a Flow Execution Error Event platform event message occurs. A Flow Execution Error Event message occurred, but the process didn&apos;t start because no records in your org match the values specified in the process&apos;s Object node.
+The LogMessage FlowExecutionErrorProcess process is configured to start when a Flow Execution Error Event platform event message occurs. A Flow Execution Error Event message occurred, but the process didn&apos;t start because no records in your org match the values specified in the process&apos;s Object node.
 
 
 
