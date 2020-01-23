@@ -140,14 +140,41 @@
         <type>Default</type>
     </actionOverrides>
     <fields>
-        <fullName>ErrorMessage__c</fullName>
-        <description>Error Message</description>
+        <fullName>Email_Body__c</fullName>
         <externalId>false</externalId>
-        <label>ErrorMessage</label>
+        <label>Email Body</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Email_Subject__c</fullName>
+        <externalId>false</externalId>
+        <label>Email Subject</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Error_Message__c</fullName>
+        <externalId>false</externalId>
+        <label>Error Message</label>
         <length>131072</length>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>From_Email__c</fullName>
+        <externalId>false</externalId>
+        <label>From Email</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Payload__c</fullName>
@@ -159,10 +186,9 @@
         <visibleLines>3</visibleLines>
     </fields>
     <fields>
-        <fullName>ProcessType__c</fullName>
-        <description>Type of process  (e.g. AD, Renewal, Etc.)</description>
+        <fullName>Process_Type__c</fullName>
         <externalId>false</externalId>
-        <label>ProcessType</label>
+        <label>Process Type</label>
         <length>100</length>
         <required>false</required>
         <trackTrending>false</trackTrending>
@@ -182,17 +208,16 @@
     <fields>
         <fullName>StackTrace__c</fullName>
         <externalId>false</externalId>
-        <label>Stack Trace</label>
-        <length>131072</length>
+        <label>StackTrace</label>
+        <length>32768</length>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>3</visibleLines>
     </fields>
     <fields>
-        <fullName>TrackingHistory__c</fullName>
-        <description>Tracking History from Checkpoint Manager</description>
+        <fullName>Tracking_History__c</fullName>
         <externalId>false</externalId>
-        <label>TrackingHistory</label>
+        <label>Tracking History</label>
         <length>131072</length>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
@@ -201,84 +226,39 @@
     <fields>
         <fullName>User__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
-        <description>Created By User</description>
         <externalId>false</externalId>
         <label>User</label>
         <referenceTo>User</referenceTo>
-        <relationshipName>Logs</relationshipName>
+        <relationshipName>LogMessages</relationshipName>
         <required>false</required>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
-    <fields>
-        <fullName>Email_Body__c</fullName>
-        <externalId>false</externalId>
-        <label>Email Body</label>
-        <length>32768</length>
-        <trackTrending>false</trackTrending>
-        <type>Html</type>
-        <visibleLines>25</visibleLines>
-    </fields>
-    <fields>
-        <fullName>From_Email__c</fullName>
-        <externalId>false</externalId>
-        <label>From Email</label>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Email</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Subject__c</fullName>
-        <externalId>false</externalId>
-        <label>Subject</label>
-        <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
     <allowInChatterGroups>false</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
-    <description>History of Logs - mostly used for error logs</description>
     <enableActivities>false</enableActivities>
     <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>
     <enableHistory>false</enableHistory>
     <enableLicensing>false</enableLicensing>
-    <enableReports>true</enableReports>
+    <enableReports>false</enableReports>
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
-    <label>Log</label>
+    <label>LogMessage</label>
     <nameField>
         <displayFormat>Log-{0000}</displayFormat>
-        <label>Log Number</label>
+        <label>LogMessage Number</label>
         <type>AutoNumber</type>
     </nameField>
-    <pluralLabel>Logs</pluralLabel>
+    <pluralLabel>LogMessages</pluralLabel>
     <searchLayouts />
     <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>
     <listViews>
         <fullName>All</fullName>
-        <columns>NAME</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>CREATEDBY_USER</columns>
-        <columns>ErrorMessage__c</columns>
-        <columns>Payload__c</columns>
-        <columns>StackTrace__c</columns>
-        <columns>Subject__c</columns>
-        <columns>Source__c</columns>
-        <columns>ProcessType__c</columns>
-        <columns>TrackingHistory__c</columns>
-        <filterScope>Everything</filterScope>
-        <label>All</label>
-    </listViews>
-    <listViews>
-        <fullName>All1</fullName>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>

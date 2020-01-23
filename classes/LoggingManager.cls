@@ -27,7 +27,7 @@ public without sharing class LoggingManager implements ILoggingManager {
             Log__c logS = new Log__c(
                     ErrorMessage__c=log.errorMessage,
                     trackingHistory__c=trackingHistory,
-                    ErrorType__c=errorType,
+                    //ErrorType__c=errorType,
                     ProcessType__c=String.valueOf(log.iprocessType),
                     User__c=UserInfo.getUserId(),
                     Payload__c=payload,
@@ -122,7 +122,7 @@ public without sharing class LoggingManager implements ILoggingManager {
                 String trackingHistory = ServiceFactory.getInstance().getCheckpointManagerInstance().getCheckpointDetail();
                 Log__c logS = new Log__c(
                         ErrorMessage__c=message,
-                        ErrorType__c=errorType,
+                        //ErrorType__c=errorType,
                         ProcessType__c=String.valueOf(processType),
                         TrackingHistory__c = trackingHistory,
                         Source__c = source,
@@ -164,7 +164,7 @@ public without sharing class LoggingManager implements ILoggingManager {
             Log__c logS = new Log__c(
                     ErrorMessage__c=logRequest.errorMessage,
                     trackingHistory__c=trackingHistory,
-                    ErrorType__c=errorType,
+                    //ErrorType__c=errorType,
                     ProcessType__c=logRequest.processType,
                     Payload__c=logRequest.payload,
                     Source__c = String.isNotBlank(logRequest.source)?logRequest.source:'',
