@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Flow xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <actionCalls>
         <name>eventContextErrorEmail</name>
         <label>Context Error Email</label>
@@ -56,15 +56,99 @@
         <processMetadataValues>
             <name>apexSelection</name>
             <value>
-                <stringValue>LogMessage</stringValue>
+                <stringValue>ErrorMessage</stringValue>
             </value>
         </processMetadataValues>
         <name>myRule_1_A1</name>
-        <label>Log message using Log Message</label>
+        <label>Log Error Message</label>
         <locationX>100</locationX>
         <locationY>200</locationY>
-        <actionName>01p2E00000Byhx9NotFound</actionName>
-        <actionType xsi:nil="true"/>
+        <actionName>ErrorLogger</actionName>
+        <actionType>apex</actionType>
+        <inputParameters>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>String</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>userId</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>maxOccurs</name>
+                <value>
+                    <numberValue>1.0</numberValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>objectType</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Event</stringValue>
+                </value>
+            </processMetadataValues>
+            <name>userId</name>
+            <value>
+                <elementReference>myVariable_myEvent.UserId</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>String</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>source</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>maxOccurs</name>
+                <value>
+                    <numberValue>1.0</numberValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>objectType</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Event</stringValue>
+                </value>
+            </processMetadataValues>
+            <name>source</name>
+            <value>
+                <elementReference>myVariable_myEvent.FlowApiName</elementReference>
+            </value>
+        </inputParameters>
         <inputParameters>
             <processMetadataValues>
                 <name>dataType</name>
@@ -147,90 +231,6 @@
             <name>stackTrace</name>
             <value>
                 <elementReference>myVariable_myEvent.ElementApiName</elementReference>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <processMetadataValues>
-                <name>dataType</name>
-                <value>
-                    <stringValue>String</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>isRequired</name>
-                <value>
-                    <booleanValue>false</booleanValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideLabel</name>
-                <value>
-                    <stringValue>source</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>maxOccurs</name>
-                <value>
-                    <numberValue>1.0</numberValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>objectType</name>
-                <value>
-                    <stringValue></stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>rightHandSideType</name>
-                <value>
-                    <stringValue>Event</stringValue>
-                </value>
-            </processMetadataValues>
-            <name>source</name>
-            <value>
-                <elementReference>myVariable_myEvent.FlowApiName</elementReference>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <processMetadataValues>
-                <name>dataType</name>
-                <value>
-                    <stringValue>String</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>isRequired</name>
-                <value>
-                    <booleanValue>false</booleanValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideLabel</name>
-                <value>
-                    <stringValue>userId</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>maxOccurs</name>
-                <value>
-                    <numberValue>1.0</numberValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>objectType</name>
-                <value>
-                    <stringValue></stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>rightHandSideType</name>
-                <value>
-                    <stringValue>Event</stringValue>
-                </value>
-            </processMetadataValues>
-            <name>userId</name>
-            <value>
-                <elementReference>myVariable_myEvent.UserId</elementReference>
             </value>
         </inputParameters>
     </actionCalls>
@@ -336,7 +336,7 @@
         <dataType>String</dataType>
         <expression>{!$Organization.Name}</expression>
     </formulas>
-    <interviewLabel>LogMessage_FlowExecutionErrorProcess-4_InterviewLabel</interviewLabel>
+    <interviewLabel>LogMessage_FlowExecutionErrorProcess-5_InterviewLabel</interviewLabel>
     <label>LogMessage FlowExecutionErrorProcess</label>
     <loops>
         <name>eventContextCheckLoop</name>

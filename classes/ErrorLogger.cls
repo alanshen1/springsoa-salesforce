@@ -12,10 +12,6 @@ public without sharing class ErrorLogger implements IErrorLogger{
         return errorLoggerinstance;
     }
 
-    public static void print(){
-        System.debug('ErrorLogger.print print: ');
-    }
-
     public void logMessage(ErrorMessage errorMessage) {
         System.debug('Logger.logMessage logMessage: ' + errorMessage);
         logMessages(new List<ErrorMessage>{
@@ -87,6 +83,9 @@ public without sharing class ErrorLogger implements IErrorLogger{
         logs.clear();
     }
 
+    /**
+     * Publish Custom LoggingEvent__e
+     */
     public void fireLogEvent(String errorMessage, String processType, String source) {
         LoggingEvent__e loggingEvent = new LoggingEvent__e();
         loggingEvent.Error_Message__c = errorMessage;
