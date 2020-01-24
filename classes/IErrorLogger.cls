@@ -1,7 +1,7 @@
 public interface IErrorLogger {
 
-    void logMessage(LogMessage logMessage);
-    void logMessages(List<LogMessage> logMessages);
+    void logMessage(ErrorMessage errorMessage);
+    void logMessages(List<ErrorMessage> errorMessages);
     void flush();
 
 }
