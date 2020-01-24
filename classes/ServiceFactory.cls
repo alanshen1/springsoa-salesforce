@@ -13,7 +13,6 @@ public with sharing class ServiceFactory {
 	private IPlatformCacheManager platformCacheManager;
     private IStatisticsManager statisticsManager;
     private ILoggingManager loggingManager;
-    private ILogger loggerInstance;
 
     /**
       * private constructor
@@ -72,16 +71,4 @@ public with sharing class ServiceFactory {
         }
         return loggingManager;
     }
-
-    /**
-     * this method returns logger instance
-     */
-    public ILogger getLoggingInstance() {
-        if( loggerInstance == null ) {
-            loggerInstance = new Logger();
-        }
-        return loggerInstance;
-    }
-
-
 }

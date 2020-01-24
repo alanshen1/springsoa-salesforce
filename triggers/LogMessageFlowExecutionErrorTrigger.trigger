@@ -1,7 +1,7 @@
 trigger LogMessageFlowExecutionErrorTrigger  on FlowExecutionErrorEvent (after insert) {
+    List<LogMessage> logMessages = new List<LogMessage>();
     for(FlowExecutionErrorEvent evt: (List<FlowExecutionErrorEvent>) Trigger.new){
-		LogMessage logMessage = new LogMessage(evt.FlowApiName,evt);		
-        ILogger ilogger = ServiceFactory.getInstance().getLoggingInstance();
-        ilogger.logMessage(logMessage);
+        logMessages.add(new LogMessage(evt.FlowApiName,evt));
     }
+    LogMessageFlowExecutionErrorHandler.logMessages(logMessages);
 }

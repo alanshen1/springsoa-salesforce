@@ -1,4 +1,4 @@
-public without sharing class Logger {
+public without sharing class ErrorLogger {
 /*
     private static List<LogMessage> logs { get; set; }
     private static List<LogMessage> logEvents { get; set; }

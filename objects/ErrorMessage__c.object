@@ -247,13 +247,13 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
-    <label>Log Message</label>
+    <label>Error Message</label>
     <nameField>
         <displayFormat>Log-{0000}</displayFormat>
-        <label>LogMessage Number</label>
+        <label>Error Message Number</label>
         <type>AutoNumber</type>
     </nameField>
-    <pluralLabel>Log Messages</pluralLabel>
+    <pluralLabel>Error Messages</pluralLabel>
     <searchLayouts />
     <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>
