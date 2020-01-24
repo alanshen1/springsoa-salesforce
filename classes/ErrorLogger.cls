@@ -2,13 +2,18 @@ public without sharing class ErrorLogger implements IErrorLogger{
 
     private static List<ErrorMessage> logs { get; set; }
     private static List<ErrorMessage> logEvents { get; set; }
-    private static ErrorLogger instance = null;
+    private static IErrorLogger errorLoggerinstance = null;
+    private ErrorLogger(){}
 
-    public static ErrorLogger getInstance(){
-        if(instance == null){
-            instance = new ErrorLogger();
+    public static IErrorLogger getErrorLoggerInstance(){
+        if(errorLoggerinstance == null){
+            errorLoggerinstance = new ErrorLogger();
         }
-        return instance;
+        return errorLoggerinstance;
+    }
+
+    public static void print(){
+        System.debug('ErrorLogger.print print: ');
     }
 
     public void logMessage(ErrorMessage errorMessage) {
@@ -41,6 +46,7 @@ public without sharing class ErrorLogger implements IErrorLogger{
     public static void logMessage(ErrorMessage[] errorMessages) {
         ErrorMessage errorMessage;
         System.debug('Logger.logMessage logMessages: ' + JSON.serialize(errorMessages));
+        IErrorLogger iErrLogger = ErrorLogger.getErrorLoggerInstance();
         if(!errorMessages.isEmpty()){
             errorMessage = errorMessages[0];
         }else{
@@ -49,17 +55,13 @@ public without sharing class ErrorLogger implements IErrorLogger{
         }
         try {
             System.debug('ErrorLogger.logMessage logMessage: ' + JSON.serialize(errorMessage));
-            //logMessage(errorMessage);
+            iErrLogger.logMessage(errorMessage);
         } catch(Exception e) {
             System.debug('Logger.logMessage e: ' + e);
             System.debug(LoggingLevel.ERROR, 'Error calling logMessage in Logger' + e.getMessage() );
         }finally {
-            //flush();
+            iErrLogger.flush();
         }
-    }
-
-    public void print(){
-        System.debug('SpringSOA');
     }
 
     /**
