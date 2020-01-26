@@ -2,15 +2,11 @@ global class ProcessAutomationEmailToLogHandler implements Messaging.InboundEmai
     global Messaging.InboundEmailResult handleInboundEmail(Messaging.inboundEmail email, Messaging.InboundEnvelope env){
         Messaging.InboundEmailResult result = new Messaging.InboundEmailResult();
         System.debug('ProcessAutomationEmailToLogHandler handleInboundEmail'+JSON.serialize(email));
-        
-        Log__c log = new Log__c();
+        ErrorMessage errorMessage = new ErrorMessage('',email);
 
-        log.Subject__c 		= email.subject;
-        log.Email_Body__c 	= email.htmlBody;
-        log.From_Email__c 	= email.fromAddress;
-        
-        insert log;
-
+        IErrorLogger iErrLogger = ErrorLogger.getErrorLoggerInstance();
+        iErrLogger.logMessage(errorMessage);
+        iErrLogger.flush();
         result.success = false;
         return result;
     }

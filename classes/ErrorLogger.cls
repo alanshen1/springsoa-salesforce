@@ -21,6 +21,7 @@ public without sharing class ErrorLogger implements IErrorLogger{
 
     public void logMessages(List<ErrorMessage> errorMessages) {
         logs = new List<ErrorMessage>();
+        logEvents = new List<ErrorMessage>();
         for (ErrorMessage errorMessage : errorMessages) {
             logs.add(errorMessage);
         }
@@ -33,6 +34,8 @@ public without sharing class ErrorLogger implements IErrorLogger{
     }
 
     public void fireLogEvents(List<ErrorMessage> errorMessages) {
+        logs = new List<ErrorMessage>();
+        logEvents = new List<ErrorMessage>();
         for (ErrorMessage errorMessage : errorMessages) {
             logEvents.add(errorMessage);
         }
@@ -71,7 +74,7 @@ public without sharing class ErrorLogger implements IErrorLogger{
             }
             insert errorMessages;
         }
-
+        System.debug('ErrorLogger.flush logEvents: ' + JSON.serialize(logEvents));
         if (logEvents!=null && !logEvents.isEmpty()) {
             List<LogEvent__e> events = new List<LogEvent__e>();
             for (ErrorMessage errorMessage : logEvents) {
@@ -79,7 +82,7 @@ public without sharing class ErrorLogger implements IErrorLogger{
             }
             EventBus.publish(events);
         }
-
+        logEvents.clear();
         logs.clear();
     }
 

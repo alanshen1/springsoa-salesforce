@@ -3,8 +3,10 @@ public class SynchronousTryCatchExceptionDemo {
         try{
             System.debug(2/0);
         }catch(Exception ex){
-            ILoggingManager iloggingManager = ServiceFactory.getInstance().getLoggingManagerInstance();
-            iloggingManager.logMessage(Log.ProcessType.Error,ex,ex.getMessage());
+            ErrorMessage errorMessage = new ErrorMessage('SynchronousTryCatchExceptionDemo',ex);
+            IErrorLogger iErrLogger = ErrorLogger.getErrorLoggerInstance();
+            iErrLogger.logMessage(errorMessage);
+            iErrLogger.flush();
         }
     }
 }

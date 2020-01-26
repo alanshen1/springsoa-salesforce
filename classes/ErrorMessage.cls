@@ -43,6 +43,7 @@ public without sharing class ErrorMessage {
     }
 
     public ErrorMessage(LoggingEvent__e loggingEvent) {
+        System.debug('ErrorMessage.ErrorMessage loggingEvent: ' + JSON.serialize(loggingEvent));
         this.source = loggingEvent.Source__c;
         this.errorMessage = loggingEvent.Error_Message__c;
         this.userId = loggingEvent.User__c;
