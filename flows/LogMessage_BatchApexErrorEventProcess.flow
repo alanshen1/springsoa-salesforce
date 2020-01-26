@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Flow xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <actionCalls>
         <name>eventContextErrorEmail</name>
         <label>Context Error Email</label>
@@ -56,15 +56,15 @@
         <processMetadataValues>
             <name>apexSelection</name>
             <value>
-                <stringValue>LogMessage</stringValue>
+                <stringValue>ErrorMessage</stringValue>
             </value>
         </processMetadataValues>
         <name>myRule_1_A1</name>
-        <label>Log message using Log Message</label>
+        <label>Log Error Message</label>
         <locationX>100</locationX>
         <locationY>200</locationY>
-        <actionName>01p2E00000Byhx9NotFound</actionName>
-        <actionType xsi:nil="true"/>
+        <actionName>ErrorLogger</actionName>
+        <actionType>apex</actionType>
         <inputParameters>
             <processMetadataValues>
                 <name>dataType</name>
@@ -81,7 +81,7 @@
             <processMetadataValues>
                 <name>leftHandSideLabel</name>
                 <value>
-                    <stringValue>errorMessage</stringValue>
+                    <stringValue>userId</stringValue>
                 </value>
             </processMetadataValues>
             <processMetadataValues>
@@ -99,13 +99,10 @@
             <processMetadataValues>
                 <name>rightHandSideType</name>
                 <value>
-                    <stringValue>Event</stringValue>
+                    <stringValue>GlobalConstant</stringValue>
                 </value>
             </processMetadataValues>
-            <name>errorMessage</name>
-            <value>
-                <elementReference>myVariable_myEvent.Message</elementReference>
-            </value>
+            <name>userId</name>
         </inputParameters>
         <inputParameters>
             <processMetadataValues>
@@ -146,7 +143,49 @@
             </processMetadataValues>
             <name>stackTrace</name>
             <value>
-                <elementReference>myVariable_myEvent.RequestId</elementReference>
+                <elementReference>myVariable_myEvent.StackTrace</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>String</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>errorMessage</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>maxOccurs</name>
+                <value>
+                    <numberValue>1.0</numberValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>objectType</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Event</stringValue>
+                </value>
+            </processMetadataValues>
+            <name>errorMessage</name>
+            <value>
+                <elementReference>myVariable_myEvent.Message</elementReference>
             </value>
         </inputParameters>
         <inputParameters>
@@ -294,7 +333,7 @@
         <dataType>String</dataType>
         <expression>{!$Organization.Name}</expression>
     </formulas>
-    <interviewLabel>LogMessage_BatchApexErrorEventProcess-1_InterviewLabel</interviewLabel>
+    <interviewLabel>LogMessage_BatchApexErrorEventProcess-2_InterviewLabel</interviewLabel>
     <label>LogMessage BatchApexErrorEventProcess</label>
     <loops>
         <name>eventContextCheckLoop</name>
@@ -435,7 +474,7 @@
         <outputReference>myVariable_event_context_collection</outputReference>
     </recordLookups>
     <startElementReference>myEventContextRecordLookup</startElementReference>
-    <status>Obsolete</status>
+    <status>Active</status>
     <textTemplates>
         <description>text template for when multiple records are records found</description>
         <name>multipleRecordsFoundTextTemplate</name>
