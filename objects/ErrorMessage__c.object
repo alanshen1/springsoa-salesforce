@@ -215,15 +215,6 @@
         <visibleLines>3</visibleLines>
     </fields>
     <fields>
-        <fullName>Tracking_History__c</fullName>
-        <externalId>false</externalId>
-        <label>Tracking History</label>
-        <length>131072</length>
-        <trackTrending>false</trackTrending>
-        <type>LongTextArea</type>
-        <visibleLines>3</visibleLines>
-    </fields>
-    <fields>
         <fullName>User__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <externalId>false</externalId>

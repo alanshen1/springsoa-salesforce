@@ -10,7 +10,7 @@
         <inputParameters>
             <name>emailSubject</name>
             <value>
-                <stringValue>Salesforce LogMessage FlowExecutionErrorProcess process didn&apos;t start: No matching records found</stringValue>
+                <stringValue>Salesforce LogMessage Error Event process didn&apos;t start: No matching records found</stringValue>
             </value>
         </inputParameters>
         <inputParameters>
@@ -36,7 +36,7 @@
         <inputParameters>
             <name>emailSubject</name>
             <value>
-                <stringValue>Salesforce LogMessage FlowExecutionErrorProcess process didn&apos;t start: Multiple matching records found</stringValue>
+                <stringValue>Salesforce LogMessage Error Event process didn&apos;t start: Multiple matching records found</stringValue>
             </value>
         </inputParameters>
         <inputParameters>
@@ -104,7 +104,7 @@
             </processMetadataValues>
             <name>userId</name>
             <value>
-                <elementReference>myVariable_myEvent.UserId</elementReference>
+                <elementReference>myVariable_myEvent.Source__c</elementReference>
             </value>
         </inputParameters>
         <inputParameters>
@@ -146,7 +146,7 @@
             </processMetadataValues>
             <name>source</name>
             <value>
-                <elementReference>myVariable_myEvent.FlowApiName</elementReference>
+                <elementReference>myVariable_myEvent.Source__c</elementReference>
             </value>
         </inputParameters>
         <inputParameters>
@@ -188,49 +188,7 @@
             </processMetadataValues>
             <name>errorMessage</name>
             <value>
-                <elementReference>myVariable_myEvent.ErrorMessage</elementReference>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <processMetadataValues>
-                <name>dataType</name>
-                <value>
-                    <stringValue>String</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>isRequired</name>
-                <value>
-                    <booleanValue>false</booleanValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideLabel</name>
-                <value>
-                    <stringValue>stackTrace</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>maxOccurs</name>
-                <value>
-                    <numberValue>1.0</numberValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>objectType</name>
-                <value>
-                    <stringValue></stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>rightHandSideType</name>
-                <value>
-                    <stringValue>Event</stringValue>
-                </value>
-            </processMetadataValues>
-            <name>stackTrace</name>
-            <value>
-                <elementReference>myVariable_myEvent.ElementApiName</elementReference>
+                <elementReference>myVariable_myEvent.Error_Message__c</elementReference>
             </value>
         </inputParameters>
     </actionCalls>
@@ -325,7 +283,6 @@
             <label>No Criteria</label>
         </rules>
     </decisions>
-    <description>Log Message from Logger</description>
     <formulas>
         <name>formula_myRule_1</name>
         <dataType>Boolean</dataType>
@@ -336,8 +293,8 @@
         <dataType>String</dataType>
         <expression>{!$Organization.Name}</expression>
     </formulas>
-    <interviewLabel>LogMessage_FlowExecutionErrorProcess-5_InterviewLabel</interviewLabel>
-    <label>LogMessage FlowExecutionErrorProcess</label>
+    <interviewLabel>LogMessage_Error_Event-1_InterviewLabel</interviewLabel>
+    <label>LogMessage Error Event</label>
     <loops>
         <name>eventContextCheckLoop</name>
         <label>ContextCheckLoop</label>
@@ -356,7 +313,7 @@
     <processMetadataValues>
         <name>EventType</name>
         <value>
-            <stringValue>FlowExecutionErrorEvent</stringValue>
+            <stringValue>ErrorEvent__e</stringValue>
         </value>
     </processMetadataValues>
     <processMetadataValues>
@@ -477,13 +434,13 @@
         <outputReference>myVariable_event_context_collection</outputReference>
     </recordLookups>
     <startElementReference>myEventContextRecordLookup</startElementReference>
-    <status>Obsolete</status>
+    <status>Active</status>
     <textTemplates>
         <description>text template for when multiple records are records found</description>
         <name>multipleRecordsFoundTextTemplate</name>
         <text>Hello {!OrganizationName} Admin, 
 
-The LogMessage FlowExecutionErrorProcess process is configured to start when a Flow Execution Error Event platform event message occurs. A Flow Execution Error Event message occurred, but the process didn&apos;t start because multiple records in your org match the values specified in the process&apos;s Object node.
+The LogMessage Error Event process is configured to start when a Error Event platform event message occurs. A Error Event message occurred, but the process didn&apos;t start because multiple records in your org match the values specified in the process&apos;s Object node.
 
 
 
@@ -497,7 +454,7 @@ Salesforce Process Automation</text>
         <name>noRecordsFoundTextTemplate</name>
         <text>Hello {!OrganizationName} Admin, 
 
-The LogMessage FlowExecutionErrorProcess process is configured to start when a Flow Execution Error Event platform event message occurs. A Flow Execution Error Event message occurred, but the process didn&apos;t start because no records in your org match the values specified in the process&apos;s Object node.
+The LogMessage Error Event process is configured to start when a Error Event platform event message occurs. A Error Event message occurred, but the process didn&apos;t start because no records in your org match the values specified in the process&apos;s Object node.
 
 
 
@@ -547,6 +504,6 @@ Salesforce Process Automation</text>
         <isCollection>false</isCollection>
         <isInput>true</isInput>
         <isOutput>false</isOutput>
-        <objectType>FlowExecutionErrorEvent</objectType>
+        <objectType>ErrorEvent__e</objectType>
     </variables>
 </Flow>

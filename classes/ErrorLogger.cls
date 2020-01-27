@@ -1,65 +1,71 @@
-public without sharing class ErrorLogger implements IErrorLogger{
+public without sharing class ErrorLogger implements IErrorLogger {
 
     private static List<ErrorMessage> logs { get; set; }
-    private static List<ErrorMessage> logEvents { get; set; }
-    private static IErrorLogger errorLoggerinstance = null;
-    private ErrorLogger(){}
+    private static List<ErrorMessage> publishErrorEvents { get; set; }
 
-    public static IErrorLogger getErrorLoggerInstance(){
-        if(errorLoggerinstance == null){
-            errorLoggerinstance = new ErrorLogger();
+    private static IErrorLogger errorLoggerInstance = null;
+
+    private ErrorLogger() {
+    }
+
+    public static IErrorLogger getErrorLoggerInstance() {
+        if (errorLoggerInstance == null) {
+            logs = new List<ErrorMessage>();
+            publishErrorEvents = new List<ErrorMessage>();
+
+            errorLoggerInstance = new ErrorLogger();
         }
-        return errorLoggerinstance;
+        return errorLoggerInstance;
     }
 
     public void logMessage(ErrorMessage errorMessage) {
-        System.debug('Logger.logMessage logMessage: ' + errorMessage);
         logMessages(new List<ErrorMessage>{
                 errorMessage
         });
     }
 
     public void logMessages(List<ErrorMessage> errorMessages) {
-        logs = new List<ErrorMessage>();
-        logEvents = new List<ErrorMessage>();
+        System.debug(' ErrorLogger.logMessages errorMessages: ' + JSON.serialize(errorMessages));
+
         for (ErrorMessage errorMessage : errorMessages) {
             logs.add(errorMessage);
         }
     }
 
-    public void fireLogEvent(ErrorMessage errorMessage) {
-        fireLogEvents(new List<ErrorMessage>{
+    public void fireErrorEvent(ErrorMessage errorMessage) {
+        fireErrorEvents(new List<ErrorMessage>{
                 errorMessage
         });
     }
 
-    public void fireLogEvents(List<ErrorMessage> errorMessages) {
-        logs = new List<ErrorMessage>();
-        logEvents = new List<ErrorMessage>();
+    public void fireErrorEvents(List<ErrorMessage> errorMessages) {
+        System.debug(' ErrorLogger.fireErrorEvents errorMessages: ' + JSON.serialize(errorMessages));
+
         for (ErrorMessage errorMessage : errorMessages) {
-            logEvents.add(errorMessage);
+            publishErrorEvents.add(errorMessage);
         }
     }
 
-    @InvocableMethod(label='ErrorMessage')
+    @InvocableMethod(Label='ErrorMessage')
     public static void logMessage(ErrorMessage[] errorMessages) {
-        ErrorMessage errorMessage;
         System.debug('Logger.logMessage logMessages: ' + JSON.serialize(errorMessages));
-        IErrorLogger iErrLogger = ErrorLogger.getErrorLoggerInstance();
-        if(!errorMessages.isEmpty()){
+
+        IErrorLogger iErrorLogger = ErrorLogger.getErrorLoggerInstance();
+        ErrorMessage errorMessage;
+        if (!errorMessages.isEmpty()) {
             errorMessage = errorMessages[0];
-        }else{
+        } else {
             System.debug(LoggingLevel.ERROR, 'Error calling logMessage in ErrorLogger, ErrorMessage not found. ');
             return;
         }
         try {
             System.debug('ErrorLogger.logMessage logMessage: ' + JSON.serialize(errorMessage));
-            iErrLogger.logMessage(errorMessage);
-        } catch(Exception e) {
+            iErrorLogger.logMessage(errorMessage);
+        } catch (Exception e) {
             System.debug('Logger.logMessage e: ' + e);
-            System.debug(LoggingLevel.ERROR, 'Error calling logMessage in Logger' + e.getMessage() );
-        }finally {
-            iErrLogger.flush();
+            System.debug(LoggingLevel.ERROR, 'Error calling logMessage in Logger' + e.getMessage());
+        } finally {
+            iErrorLogger.flush();
         }
     }
 
@@ -67,35 +73,25 @@ public without sharing class ErrorLogger implements IErrorLogger{
      * Commit logs into database.
      */
     public void flush() {
-        if (logs!=null && !logs.isEmpty()) {
+        System.debug(' ErrorLogger.flush logs: ' + JSON.serialize(logs));
+        if (logs != null && !logs.isEmpty()) {
             List<ErrorMessage__c> errorMessages = new List<ErrorMessage__c>();
             for (ErrorMessage errorMessage : logs) {
                 errorMessages.add(parseLog(errorMessage));
             }
             insert errorMessages;
         }
-        System.debug('ErrorLogger.flush logEvents: ' + JSON.serialize(logEvents));
-        if (logEvents!=null && !logEvents.isEmpty()) {
-            List<LogEvent__e> events = new List<LogEvent__e>();
-            for (ErrorMessage errorMessage : logEvents) {
+        logs.clear();
+
+        System.debug('ErrorLogger.flush publishErrorEvents: ' + JSON.serialize(publishErrorEvents));
+        if (publishErrorEvents != null && !publishErrorEvents.isEmpty()) {
+            List<ErrorEvent__e> events = new List<ErrorEvent__e>();
+            for (ErrorMessage errorMessage : publishErrorEvents) {
                 events.add(parseLogEvent(errorMessage));
             }
             EventBus.publish(events);
         }
-        logEvents.clear();
-        logs.clear();
-    }
-
-    /**
-     * Publish Custom LoggingEvent__e
-     */
-    public void fireLogEvent(String errorMessage, String processType, String source) {
-        LoggingEvent__e loggingEvent = new LoggingEvent__e();
-        loggingEvent.Error_Message__c = errorMessage;
-        loggingEvent.ProcessType__c = processType;
-        loggingEvent.Source__c = source;
-        loggingEvent.User__c = UserInfo.getUserId();
-        EventBus.publish(loggingEvent);
+        publishErrorEvents.clear();
     }
 
     /**
@@ -115,24 +111,23 @@ public without sharing class ErrorLogger implements IErrorLogger{
                 Source__c = errorMessage.source,
                 StackTrace__c = errorMessage.stackTrace,
                 Payload__c = errorMessage.payload,
-                User__c = (String.isNotBlank(errorMessage.userId) ? errorMessage.userId : UserInfo.getUserId()),
-                Tracking_History__c = ServiceFactory.getInstance().getCheckpointManagerInstance().getCheckpointDetail()
+                User__c = (String.isNotBlank(errorMessage.userId) ? errorMessage.userId : UserInfo.getUserId())
         );
     }
 
     /**
-     * Parse log event and return LogEvent__c.
+     * Parse log event and return ErrorEvent__e.
      *
      * @param logMessage
      *
-     * @return LogEvent__c
+     * @return ErrorEvent__e
      */
     @TestVisible
-    private LogEvent__e parseLogEvent(ErrorMessage errorMessage) {
-        return new LogEvent__e(
+    private ErrorEvent__e parseLogEvent(ErrorMessage errorMessage) {
+        return new ErrorEvent__e(
                 Error_Message__c = errorMessage.errorMessage,
                 Source__c = errorMessage.source,
-                User__c = UserInfo.getUserId()
+                UserId__c = UserInfo.getUserId()
         );
     }
 }
