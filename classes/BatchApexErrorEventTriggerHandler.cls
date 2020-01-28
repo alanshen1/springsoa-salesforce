@@ -4,8 +4,8 @@ public class BatchApexErrorEventTriggerHandler {
         System.debug(' LogMessageBatchApexErrorHandler.afterInsertLogError batchApexErrorEvents: ' + JSON.serialize(batchApexErrorEvents));
         
         List<ErrorMessage> errorMessages = new List<ErrorMessage>();
-        for (BatchApexErrorEvent evt : batchApexErrorEvents) {
-            errorMessages.add(new ErrorMessage(evt.AsyncApexJobId, evt));
+        for (BatchApexErrorEvent batchApexErrorEvent : batchApexErrorEvents) {
+            errorMessages.add(new ErrorMessage(batchApexErrorEvent.AsyncApexJobId, batchApexErrorEvent));
         }
 
         IErrorLogger iErrorLogger = ErrorLogger.getErrorLoggerInstance();

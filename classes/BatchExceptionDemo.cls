@@ -1,19 +1,29 @@
-public class BatchExceptionDemo implements Database.Batchable<sObject>,Database.RaisesPlatformEvents {
+public class BatchExceptionDemo implements Database.Batchable<sObject>, Database.RaisesPlatformEvents {
+
+    private String accountName = 'BatchExceptionAccount';
+
     public Database.QueryLocator start(Database.BatchableContext BC) {
-        String name = 'BatchExceptionAccount';
-        return Database.getQueryLocator('Select Id from Account where Name = :name');
+        Account account = new Account (Name = accountName);
+        insert account;
+
+        return Database.getQueryLocator('SELECT Id FROM Account WHERE Name = :accountName');
     }
 
-    public void execute(Database.BatchableContext BC,List<sObject> scope) {
-        Account account = (Account) scope.get(0);
-        System.debug('BatchExceptionDemo.execute account: ' + JSON.serialize(account));
-        Contact contact = new Contact();
-        contact.AccountId = account.Id;
-        contact.FirstName = 'BatchError';
-        insert contact;
+    public void execute(Database.BatchableContext BC, List<sObject> scope) {
+        System.debug('BatchExceptionDemo.execute scope: ' + JSON.serialize(scope));
+
+        List<Contact> contacts = new List<Contact>();
+        for (Account account : (List<Account>) scope) {
+            Contact contact = new Contact();
+            contact.AccountId = account.Id;
+            contact.FirstName = 'BatchError';
+            contacts.add(contact);
+        }
+
+        insert contacts;
     }
 
     public void finish(Database.BatchableContext BC) {
-
     }
+
 }

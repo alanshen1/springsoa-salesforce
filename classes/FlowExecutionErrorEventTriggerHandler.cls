@@ -4,12 +4,13 @@ public class FlowExecutionErrorEventTriggerHandler {
         System.debug(' LogMessageFlowExecutionErrorHandler.afterInsert flowExecutionErrorEvents: ' + JSON.serialize(flowExecutionErrorEvents));
 
         List<ErrorMessage> errorMessages = new List<ErrorMessage>();
-        for (FlowExecutionErrorEvent evt : flowExecutionErrorEvents) {
-            errorMessages.add(new ErrorMessage(evt.FlowApiName, evt));
+        for (FlowExecutionErrorEvent flowExecutionErrorEvent : flowExecutionErrorEvents) {
+            errorMessages.add(new ErrorMessage(flowExecutionErrorEvent.FlowApiName, flowExecutionErrorEvent));
         }
 
         IErrorLogger iErrorLogger = ErrorLogger.getErrorLoggerInstance();
         iErrorLogger.logMessages(errorMessages);
         iErrorLogger.flush();
     }
+    
 }

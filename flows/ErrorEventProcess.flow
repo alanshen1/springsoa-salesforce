@@ -10,7 +10,7 @@
         <inputParameters>
             <name>emailSubject</name>
             <value>
-                <stringValue>Salesforce BatchApexErrorEventProcess process didn&apos;t start: No matching records found</stringValue>
+                <stringValue>Salesforce ErrorEventProcess process didn&apos;t start: No matching records found</stringValue>
             </value>
         </inputParameters>
         <inputParameters>
@@ -36,7 +36,7 @@
         <inputParameters>
             <name>emailSubject</name>
             <value>
-                <stringValue>Salesforce BatchApexErrorEventProcess process didn&apos;t start: Multiple matching records found</stringValue>
+                <stringValue>Salesforce ErrorEventProcess process didn&apos;t start: Multiple matching records found</stringValue>
             </value>
         </inputParameters>
         <inputParameters>
@@ -104,7 +104,49 @@
             </processMetadataValues>
             <name>errorMessage</name>
             <value>
-                <elementReference>myVariable_myEvent.Message</elementReference>
+                <elementReference>myVariable_myEvent.Error_Message__c</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>String</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>userId</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>maxOccurs</name>
+                <value>
+                    <numberValue>1.0</numberValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>objectType</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Event</stringValue>
+                </value>
+            </processMetadataValues>
+            <name>userId</name>
+            <value>
+                <elementReference>myVariable_myEvent.UserId__c</elementReference>
             </value>
         </inputParameters>
         <inputParameters>
@@ -146,49 +188,7 @@
             </processMetadataValues>
             <name>source</name>
             <value>
-                <elementReference>myVariable_myEvent.AsyncApexJobId</elementReference>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <processMetadataValues>
-                <name>dataType</name>
-                <value>
-                    <stringValue>String</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>isRequired</name>
-                <value>
-                    <booleanValue>false</booleanValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideLabel</name>
-                <value>
-                    <stringValue>stackTrace</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>maxOccurs</name>
-                <value>
-                    <numberValue>1.0</numberValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>objectType</name>
-                <value>
-                    <stringValue></stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>rightHandSideType</name>
-                <value>
-                    <stringValue>Event</stringValue>
-                </value>
-            </processMetadataValues>
-            <name>stackTrace</name>
-            <value>
-                <elementReference>myVariable_myEvent.StackTrace</elementReference>
+                <elementReference>myVariable_myEvent.Source__c</elementReference>
             </value>
         </inputParameters>
     </actionCalls>
@@ -293,8 +293,8 @@
         <dataType>String</dataType>
         <expression>{!$Organization.Name}</expression>
     </formulas>
-    <interviewLabel>BatchApexErrorEventProcess-2_InterviewLabel</interviewLabel>
-    <label>BatchApexErrorEventProcess</label>
+    <interviewLabel>ErrorEventProcess-1_InterviewLabel</interviewLabel>
+    <label>ErrorEventProcess</label>
     <loops>
         <name>eventContextCheckLoop</name>
         <label>ContextCheckLoop</label>
@@ -313,7 +313,7 @@
     <processMetadataValues>
         <name>EventType</name>
         <value>
-            <stringValue>BatchApexErrorEvent</stringValue>
+            <stringValue>ErrorEvent__e</stringValue>
         </value>
     </processMetadataValues>
     <processMetadataValues>
@@ -378,7 +378,7 @@
             <field>FirstName</field>
             <operator>EqualTo</operator>
             <value>
-                <stringValue>Salesforce</stringValue>
+                <stringValue>Spring</stringValue>
             </value>
         </filters>
         <filters>
@@ -427,7 +427,7 @@
             <field>LastName</field>
             <operator>EqualTo</operator>
             <value>
-                <stringValue>Salesforce</stringValue>
+                <stringValue>Logger</stringValue>
             </value>
         </filters>
         <object>User</object>
@@ -440,7 +440,7 @@
         <name>multipleRecordsFoundTextTemplate</name>
         <text>Hello {!OrganizationName} Admin, 
 
-The BatchApexErrorEventProcess process is configured to start when a Batch Apex Error Platform Event platform event message occurs. A Batch Apex Error Platform Event message occurred, but the process didn&apos;t start because multiple records in your org match the values specified in the process&apos;s Object node.
+The ErrorEventProcess process is configured to start when a Error Event platform event message occurs. A Error Event message occurred, but the process didn&apos;t start because multiple records in your org match the values specified in the process&apos;s Object node.
 
 
 
@@ -454,7 +454,7 @@ Salesforce Process Automation</text>
         <name>noRecordsFoundTextTemplate</name>
         <text>Hello {!OrganizationName} Admin, 
 
-The BatchApexErrorEventProcess process is configured to start when a Batch Apex Error Platform Event platform event message occurs. A Batch Apex Error Platform Event message occurred, but the process didn&apos;t start because no records in your org match the values specified in the process&apos;s Object node.
+The ErrorEventProcess process is configured to start when a Error Event platform event message occurs. A Error Event message occurred, but the process didn&apos;t start because no records in your org match the values specified in the process&apos;s Object node.
 
 
 
@@ -504,6 +504,6 @@ Salesforce Process Automation</text>
         <isCollection>false</isCollection>
         <isInput>true</isInput>
         <isOutput>false</isOutput>
-        <objectType>BatchApexErrorEvent</objectType>
+        <objectType>ErrorEvent__e</objectType>
     </variables>
 </Flow>
