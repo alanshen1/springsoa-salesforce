@@ -4,6 +4,7 @@
 
 public without sharing class ErrorMessage {
 
+    public ProcessType iProcessType;
     public String payload;
 
     @InvocableVariable public String errorMessage;
@@ -14,6 +15,10 @@ public without sharing class ErrorMessage {
     /* Email Fields */
     public String emailSubject;
     public String emailBody;
+
+    public enum ProcessType {
+        CustomPlatformEvent, Batch, EmailHandler, Flow, Warning, Error
+    }
 
     public ErrorMessage() {
     }
