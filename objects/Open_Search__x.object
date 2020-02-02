@@ -219,5 +219,19 @@
         <searchResultsAdditionalFields>DisplayUrl</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>LightningURL__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Summary__c</searchResultsAdditionalFields>
+        <searchResultsCustomButtons>Test_CS1</searchResultsCustomButtons>
     </searchLayouts>
+    <webLinks>
+        <fullName>Test_CS1</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Test CS1</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>console.log('hello');</url>
+    </webLinks>
 </CustomObject>
