@@ -4,7 +4,7 @@ public class SynchronousTryCatchExceptionDemo {
         try {
             System.debug(2 / 0);
         } catch (Exception ex) {
-            ErrorMessage errorMessage = new ErrorMessage('SynchronousTryCatchExceptionDemo', ex);
+            ErrorMessage errorMessage = new ErrorMessage('SynchronousTryCatchExceptionDemo', ex, 'EventTrigger');
 
             IErrorLogger iErrorLogger = ErrorLogger.getErrorLoggerInstance();
             iErrorLogger.logMessage(errorMessage);

@@ -4,7 +4,7 @@ global class ErrorMessageEmailHandler implements Messaging.InboundEmailHandler{
         System.debug(' ErrorMessageEmailHandler.handleInboundEmail email: ' + JSON.serialize(email));
          
         IErrorLogger iErrorLogger = ErrorLogger.getErrorLoggerInstance();
-        iErrorLogger.logMessage(new ErrorMessage('', email));
+        iErrorLogger.logMessage(new ErrorMessage('', email, 'EmailHandler'));
         iErrorLogger.flush();
 
         Messaging.InboundEmailResult result = new Messaging.InboundEmailResult();

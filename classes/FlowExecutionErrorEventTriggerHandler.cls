@@ -5,7 +5,7 @@ public class FlowExecutionErrorEventTriggerHandler {
 
         List<ErrorMessage> errorMessages = new List<ErrorMessage>();
         for (FlowExecutionErrorEvent flowExecutionErrorEvent : flowExecutionErrorEvents) {
-            errorMessages.add(new ErrorMessage(flowExecutionErrorEvent.FlowApiName, flowExecutionErrorEvent));
+            errorMessages.add(new ErrorMessage(flowExecutionErrorEvent.FlowApiName, flowExecutionErrorEvent ,  'SCREEN_FLOW'));
         }
 
         IErrorLogger iErrorLogger = ErrorLogger.getErrorLoggerInstance();

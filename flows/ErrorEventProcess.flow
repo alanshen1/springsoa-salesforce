@@ -191,6 +191,48 @@
                 <elementReference>myVariable_myEvent.Source__c</elementReference>
             </value>
         </inputParameters>
+        <inputParameters>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>String</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>errorType</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>maxOccurs</name>
+                <value>
+                    <numberValue>1.0</numberValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>objectType</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>String</stringValue>
+                </value>
+            </processMetadataValues>
+            <name>errorType</name>
+            <value>
+                <stringValue>ASYNC_APEX</stringValue>
+            </value>
+        </inputParameters>
     </actionCalls>
     <assignments>
         <name>RecordCountAssignment</name>
@@ -293,7 +335,7 @@
         <dataType>String</dataType>
         <expression>{!$Organization.Name}</expression>
     </formulas>
-    <interviewLabel>ErrorEventProcess-1_InterviewLabel</interviewLabel>
+    <interviewLabel>ErrorEventProcess-3_InterviewLabel</interviewLabel>
     <label>ErrorEventProcess</label>
     <loops>
         <name>eventContextCheckLoop</name>

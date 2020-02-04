@@ -44,17 +44,17 @@ public class ErrorLoggerTest {
     @IsTest
     public static void testLogMessageInvocable() {
         List<ErrorMessage> errorMessages = new List<ErrorMessage>();
-        ErrorMessage errorMessage = new ErrorMessage();
+        ErrorMessage errorMessageObject = new ErrorMessage();
 
         Test.startTest();
         try {
             Contact contact = new Contact(FirstName = 'Test');
             insert contact;
         } catch (Exception ex) {
-            errorMessage = new ErrorMessage('InvocableMethod', ex);
+            errorMessageObject = new ErrorMessage('InvocableMethod', ex,'Apex');
         }
 
-        errorMessages.add(errorMessage);
+        errorMessages.add(errorMessageObject);
         ErrorLogger.logMessage(errorMessages);
         Test.stopTest();
 

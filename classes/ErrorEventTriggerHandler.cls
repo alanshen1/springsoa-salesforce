@@ -5,7 +5,7 @@ public class ErrorEventTriggerHandler {
 
         List<ErrorMessage> errorMessages = new List<ErrorMessage>();
         for(ErrorEvent__e errorEvent: errorEvents){
-            errorMessages.add(new ErrorMessage(errorEvent));
+            errorMessages.add(new ErrorMessage(errorEvent,'ASYNC_APEX'));
         }
 
         IErrorLogger iErrorLogger = ErrorLogger.getErrorLoggerInstance();

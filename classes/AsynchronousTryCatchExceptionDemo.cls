@@ -9,7 +9,7 @@ public class AsynchronousTryCatchExceptionDemo {
             errorEvent.Source__c = 'AsynchronousTryCatchExceptionDemo';
             errorEvent.UserId__c = UserInfo.getUserId();
 
-            ErrorMessage errorMessage = new ErrorMessage(errorEvent);
+            ErrorMessage errorMessage = new ErrorMessage('errorEvent', ex, 'CustomEvent');
 
             IErrorLogger iErrorLogger = ErrorLogger.getErrorLoggerInstance();
             iErrorLogger.fireErrorEvent(errorMessage);

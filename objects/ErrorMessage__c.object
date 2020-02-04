@@ -215,6 +215,45 @@
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
+    <fields>
+        <fullName>Error_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Error Type</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>ASYNC_APEX</fullName>
+                    <default>false</default>
+                    <label>ASYNC_APEX</label>
+                </value>
+                <value>
+                    <fullName>SYNC_APEX</fullName>
+                    <default>false</default>
+                    <label>SYNC_APEX</label>
+                </value>
+                <value>
+                    <fullName>BATCH_APEX</fullName>
+                    <default>false</default>
+                    <label>BATCH_APEX</label>
+                </value>
+                <value>
+                    <fullName>SCREEN_FLOW</fullName>
+                    <default>false</default>
+                    <label>SCREEN_FLOW</label>
+                </value>
+                <value>
+                    <fullName>EMAIL_HANDLER</fullName>
+                    <default>false</default>
+                    <label>EMAIL_HANDLER</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
     <allowInChatterGroups>false</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
