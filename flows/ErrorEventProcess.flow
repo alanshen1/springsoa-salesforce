@@ -420,7 +420,7 @@
             <field>FirstName</field>
             <operator>EqualTo</operator>
             <value>
-                <stringValue>Spring</stringValue>
+                <stringValue>Salesforce</stringValue>
             </value>
         </filters>
         <filters>
@@ -469,14 +469,14 @@
             <field>LastName</field>
             <operator>EqualTo</operator>
             <value>
-                <stringValue>Logger</stringValue>
+                <stringValue>Salesforce</stringValue>
             </value>
         </filters>
         <object>User</object>
         <outputReference>myVariable_event_context_collection</outputReference>
     </recordLookups>
     <startElementReference>myEventContextRecordLookup</startElementReference>
-    <status>Active</status>
+    <status>Draft</status>
     <textTemplates>
         <description>text template for when multiple records are records found</description>
         <name>multipleRecordsFoundTextTemplate</name>
