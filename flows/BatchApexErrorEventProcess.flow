@@ -326,6 +326,17 @@
         </rules>
     </decisions>
     <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>$User.ID</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_2_myEventContextRecordLookup_3960630768</name>
+        <dataType>String</dataType>
+        <expression>{!$User.Id}</expression>
+    </formulas>
+    <formulas>
         <name>formula_myRule_1</name>
         <dataType>Boolean</dataType>
         <expression>true</expression>
@@ -335,7 +346,7 @@
         <dataType>String</dataType>
         <expression>{!$Organization.Name}</expression>
     </formulas>
-    <interviewLabel>BatchApexErrorEventProcess-2_InterviewLabel</interviewLabel>
+    <interviewLabel>BatchApexErrorEventProcess-1_InterviewLabel</interviewLabel>
     <label>BatchApexErrorEventProcess</label>
     <loops>
         <name>eventContextCheckLoop</name>
@@ -384,13 +395,13 @@
             <processMetadataValues>
                 <name>inputDataType</name>
                 <value>
-                    <stringValue>String</stringValue>
+                    <stringValue>ID</stringValue>
                 </value>
             </processMetadataValues>
             <processMetadataValues>
                 <name>leftHandSideLabel</name>
                 <value>
-                    <stringValue>First Name</stringValue>
+                    <stringValue>User ID</stringValue>
                 </value>
             </processMetadataValues>
             <processMetadataValues>
@@ -402,7 +413,7 @@
             <processMetadataValues>
                 <name>leftHandSideType</name>
                 <value>
-                    <stringValue>String</stringValue>
+                    <stringValue>ID</stringValue>
                 </value>
             </processMetadataValues>
             <processMetadataValues>
@@ -414,62 +425,13 @@
             <processMetadataValues>
                 <name>rightHandSideType</name>
                 <value>
-                    <stringValue>String</stringValue>
+                    <stringValue>Formula</stringValue>
                 </value>
             </processMetadataValues>
-            <field>FirstName</field>
+            <field>Id</field>
             <operator>EqualTo</operator>
             <value>
-                <stringValue>Salesforce</stringValue>
-            </value>
-        </filters>
-        <filters>
-            <processMetadataValues>
-                <name>implicit</name>
-                <value>
-                    <booleanValue>false</booleanValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>inputDataType</name>
-                <value>
-                    <stringValue>String</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideLabel</name>
-                <value>
-                    <stringValue>Last Name</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideReferenceTo</name>
-                <value>
-                    <stringValue></stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideType</name>
-                <value>
-                    <stringValue>String</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>operatorDataType</name>
-                <value>
-                    <stringValue>String</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>rightHandSideType</name>
-                <value>
-                    <stringValue>String</stringValue>
-                </value>
-            </processMetadataValues>
-            <field>LastName</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>Salesforce</stringValue>
+                <elementReference>formula_2_myEventContextRecordLookup_3960630768</elementReference>
             </value>
         </filters>
         <object>User</object>
