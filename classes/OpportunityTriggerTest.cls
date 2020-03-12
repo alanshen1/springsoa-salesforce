@@ -1,7 +1,7 @@
 @isTest 
 public class OpportunityTriggerTest {
     
-static Account testAccountData(boolean isInsert) {
+    static Account testAccountData(boolean isInsert) {
         Account account = new Account(Name = 'Test Account');
         if(isInsert){
             insert account;
@@ -9,9 +9,8 @@ static Account testAccountData(boolean isInsert) {
         return account;
     }
     
-    static Contact testContactData(boolean isInsert) {
-        Account account = testAccountData(true);
-        Contact contact = new Contact(FirstName = 'Test', LastName = 'Contact', AccountId = account.Id);
+    static Contact testContactData(Id accountId, boolean isInsert) {
+        Contact contact = new Contact(FirstName = 'Test', LastName = 'Contact', AccountId = accountId);
         if(isInsert){
             insert contact;
         }
@@ -19,18 +18,19 @@ static Account testAccountData(boolean isInsert) {
     }
     
     static Opportunity testOpportunityData(String opportunityStatus, boolean isInsert) {
-        Contact contact = testContactData(true);
-        Opportunity opportunity = new Opportunity(Name = 'Test Opportunity', CloseDate = system.today(), StageName = opportunityStatus, AccountId = contact.AccountId);
+        Account account = testAccountData(true);
+        Contact contact = testContactData(account.Id,true);
+        Opportunity opportunity = new Opportunity(Name = 'Test Opportunity', CloseDate = system.today(), StageName = opportunityStatus, AccountId = contact.accountId);
         if(isInsert){
             insert opportunity;
         }
         return opportunity;
     }
     
-    @testSetup
+    /*@testSetup
     private static void testSetup() {
         testContactData(true);
-    }
+    }*/
         
         
     @isTest
@@ -42,7 +42,7 @@ static Account testAccountData(boolean isInsert) {
     
     @isTest 
     private static void testUpdate() {
-        test.startTest(); 
+        test.startTest();
         Opportunity opportunity = testOpportunityData('Prospecting', true);
         opportunity.StageName = 'Closed Won';
         update opportunity;
