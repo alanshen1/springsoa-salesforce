@@ -1,4 +1,4 @@
-trigger OpportunityTrigger on Opportunity (before insert) {
+trigger OpportunityTrigger on Opportunity (after insert, after update) {
 	if(trigger.isAfter && trigger.isInsert){
         OpportunityTriggerHandler.afterInsert(trigger.new);
     }

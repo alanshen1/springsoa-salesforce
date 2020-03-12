@@ -1,82 +1,74 @@
+/**
+* cshah on : 03-12-2020
+* */
 public class OpportunityTriggerHandler {
-@TestVisible private static final String stageName = 'Closed Won';
+    @TestVisible private static final String stageName = 'Closed Won';
     @TestVisible private static final String role = 'Family Member';
-	
-    /**
-     *     public static afterUpdate -> addContactRolesUpdate, afterInsert _> insert
-     *      update find oppy where there was change -> insert
-     * 
-     * 
-     *      private Map<Id, List<Id>> findAccountIdToContactIds( ..List of )
-     * */
 
-    
-    //Insert Method
     public static void afterInsert(list<Opportunity> opportunity) {
-        map<Id,Id> accountIdToContactId = new map<Id,Id>();
+        addContactRoles(opportunity, null);
+    }
+
+    public static void afterUpdate(list<Opportunity> opportunity, map<Id, Opportunity> oldMap) {
+        addContactRoles(opportunity, oldMap);
+    }
+
+    @TestVisible
+    private static map<Id, list<Id>> findAccountIdToContactIds(list<Opportunity> opportunity) {
+        map<Id, list<Id>> accountIdToContactIds = new map<Id, list<Id>>();
+        for (Opportunity opportunityObj : opportunity) {
+            if (opportunityObj.StageName == stageName && opportunityObj.AccountId != null) {
+                accountIdToContactIds.put(opportunityObj.AccountId, null);
+            }
+        }
+        if (accountIdToContactIds != null) {
+            for (Contact contact : [Select Id,accountId from Contact WHERE accountId IN:accountIdToContactIds.keySet()]) {
+                if (accountIdToContactIds.containsKey(contact.AccountId)) {
+                    List<Id> contactIds = accountIdToContactIds.get(contact.AccountId);
+                    accountIdToContactIds.put(contact.AccountId, contactIds);
+                } else {
+                    accountIdToContactIds.put(contact.AccountId, new List<Id>{
+                            contact.Id
+                    });
+                }
+            }
+        }
+        return accountIdToContactIds;
+    }
+
+    public static void insertContactRoles(Opportunity opportunityObj,Id contactId) {
         list<OpportunityContactRole> opportunityContactRole = new list<OpportunityContactRole>();
-        for(Opportunity opportunityObj : opportunity) {
-            if(opportunityObj.StageName == stageName && opportunityObj.AccountId != null) {
-                accountIdToContactId.put(opportunityObj.AccountId,null);
-            }
-        }//1 method
-        if(accountIdToContactId != null) {
-            for(Contact contact : [Select Id,accountId from Contact WHERE accountId IN: accountIdToContactId.keySet()]) {
-                if(accountIdToContactId.containsKey(contact.AccountId)) {
-                    accountIdToContactId.put(contact.AccountId,contact.Id);
-                }
-                
-            }// 2 method - list 3 method
-            for(Opportunity opportunityObj : opportunity) {
-                if(opportunityObj.StageName == stageName && opportunityObj.AccountId != null) {
-                    OpportunityContactRole opportunityContactRoleObj = new OpportunityContactRole();
-                    opportunityContactRoleObj.ContactId = accountIdToContactId.get(opportunityObj.AccountId);
-                    opportunityContactRoleObj.OpportunityId = opportunityObj.Id;
-                    opportunityContactRoleObj.IsPrimary = true;
-                    opportunityContactRoleObj.Role = role;
-                    opportunityContactRole.add(opportunityContactRoleObj);
-                }
-            }
-            try {
-                insert opportunityContactRole;
-            }
-            catch(Exception exp) {
-                System.debug('AddContactRolesHandler.addContactRolesInsert Exception : ' + exp);
-            }
+                OpportunityContactRole opportunityContactRoleObj = new OpportunityContactRole();
+                opportunityContactRoleObj.ContactId = contactId;
+                opportunityContactRoleObj.OpportunityId = opportunityObj.Id;
+                opportunityContactRoleObj.IsPrimary = true;
+                opportunityContactRoleObj.Role = role;
+                opportunityContactRole.add(opportunityContactRoleObj);
+        try {
+            insert opportunityContactRole;
+        } catch (Exception exp) {
+            System.debug('AddContactRolesHandler.addContactRolesInsert Exception : ' + exp);
         }
     }
-    
-    //Update Method 
-    public static void afterUpdate(list<Opportunity> opportunity, map<Id,Opportunity> oldMap) {
-        map<Id,Id> accountIdToContactId = new map<Id,Id>();
-        list<OpportunityContactRole> opportunityContactRole = new list<OpportunityContactRole>();
-        for(Opportunity OpportunityObj : opportunity) {
-            if(OpportunityObj.StageName != oldMap.get(OpportunityObj.Id).stageName && OpportunityObj.StageName == stageName && opportunityObj.AccountId != null) {
-                accountIdToContactId.put(opportunityObj.AccountId,null);
+
+    @TestVisible
+    private static void addContactRoles(list<Opportunity> opportunity, map<Id, Opportunity> oldMap) {
+        for (Opportunity opportunityObj : opportunity) {
+            if (oldMap != null && opportunityObj.StageName != oldMap.get(opportunityObj.Id).StageName && opportunityObj.StageName == stageName && opportunityObj.AccountId != null) {
+                /**
+                * This logic is not final yet this is just prototype until we got which contact to add
+                *
+                **/
+                Id contactId = findAccountIdToContactIds(opportunity).get(opportunityObj.AccountId)[0];
+                insertContactRoles(opportunityObj, contactId);
             }
-        }
-        if(accountIdToContactId != null) {
-            for(Contact contact : [Select Id,accountId from Contact WHERE accountId IN: accountIdToContactId.keySet()]) {
-                if(accountIdToContactId.containsKey(contact.AccountId)) {
-                    accountIdToContactId.put(contact.AccountId,contact.Id);
-                }
-                
-            }
-            for(Opportunity opportunityObj : opportunity) {
-                if(opportunityObj.StageName == stageName && opportunityObj.AccountId != null) {
-                    OpportunityContactRole opportunityContactRoleObj = new OpportunityContactRole();
-                    opportunityContactRoleObj.ContactId = accountIdToContactId.get(opportunityObj.AccountId);
-                    opportunityContactRoleObj.OpportunityId = opportunityObj.Id;
-                    opportunityContactRoleObj.IsPrimary = true;
-                    opportunityContactRoleObj.Role = role;
-                    opportunityContactRole.add(opportunityContactRoleObj);
-                }
-            }
-            try {
-                insert opportunityContactRole;
-            }
-            catch(Exception exp) {
-                System.debug('AddContactRolesHandler.addContactRolesInsert Exception : ' + exp);
+            else if(opportunityObj.StageName == stageName && opportunityObj.AccountId != null){
+                /**
+                * This logic is not final yet this is just prototype until we got which contact to add
+                *
+                **/
+                Id contactId = findAccountIdToContactIds(opportunity).get(opportunityObj.AccountId)[0];
+                insertContactRoles(opportunityObj, contactId);
             }
         }
     }
