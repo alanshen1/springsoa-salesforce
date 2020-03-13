@@ -4,7 +4,7 @@
 
 trigger AccountTrigger on Account (before insert, before update, before delete, after insert, after update, after delete, after undelete) {
     if (Trigger.isInsert && Trigger.isBefore) {
-        createDefaultOpportunitiesOnAccount.createOpportunities(Trigger.new);
+        //createDefaultOpportunitiesOnAccount.createOpportunities(Trigger.new);
     }
 
     if (Trigger.isInsert && Trigger.isAfter) {

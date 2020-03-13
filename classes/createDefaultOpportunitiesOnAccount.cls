@@ -17,13 +17,6 @@ public without sharing class createDefaultOpportunitiesOnAccount {
             residentialOpportunity.StageName = Stage_Prospecting;
             residentialOpportunity.CloseDate = System.Today() + 5;
             opportunities.add(residentialOpportunity);
-
-            Opportunity commercialOpportunity = new Opportunity();
-            commercialOpportunity.AccountId = account.Id;
-            commercialOpportunity.Name = Default_Commercial_Opportunity;
-            residentialOpportunity.StageName = Stage_Prospecting;
-            residentialOpportunity.CloseDate = System.Today() + 5;
-            opportunities.add(commercialOpportunity);
         }
         try {
             insert opportunities;
