@@ -7,13 +7,13 @@ trigger AccountTrigger on Account (before insert, before update, before delete, 
     }
 
     if (Trigger.isInsert && Trigger.isAfter) {
-        createDefaultOpportunitiesOnAccount.afterInsert(Trigger.new);
+        AccountTriggerHandler.afterInsert(Trigger.new);
     }
 
     if (Trigger.isUpdate && Trigger.isBefore) {
     }
 
     if (Trigger.isUpdate && Trigger.isAfter) {
-        createDefaultOpportunitiesOnAccount.afterUpdate(Trigger.new);
+        AccountTriggerHandler.afterUpdate(Trigger.new);
     }
 }
