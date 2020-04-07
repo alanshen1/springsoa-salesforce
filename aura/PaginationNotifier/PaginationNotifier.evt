@@ -1,0 +1,7 @@
+<!--
+ - Created by Spring7 on 4/8/2020.
+ -->
+
+<aura:event type="COMPONENT" description="PaginationNotifier">
+    <aura:attribute name="pageNumber" default="1" type="Integer"/>
+</aura:event>

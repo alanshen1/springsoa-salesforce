@@ -1,0 +1,23 @@
+<!--
+ - Created by Spring7 on 4/7/2020.
+ -->
+
+<aura:component description="DisplayAccounts" controller="DisplayAccountsController">
+    <aura:attribute name="allAccounts" type="List" default="[]" description="This attributes stores all accounts"/>
+    <aura:attribute name="accountsToShow" type="List" default="[]" description="This attributes stores accounts which we are showing in datatable"/>
+    <aura:attribute name="columns" type="List"/>
+    <aura:attribute name="rowsCount" type="Integer" default="5"/>
+    <aura:attribute name="allRecordCount" type="Integer" default="0"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler name="paginationNotifier" event="c:PaginationNotifier" action="{!c.changePage}"/>
+
+    <div class="slds-text-body_regular">Total Accounts Count: {!v.allRecordCount}</div>
+    <br/>
+    <lightning:datatable
+            keyField="id"
+            data="{! v.accountsToShow }"
+            columns="{! v.columns }"
+            hideCheckboxColumn="true"/>
+    <c:Pagination pageSize="{!v.rowsCount}" />
+</aura:component>

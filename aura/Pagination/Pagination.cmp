@@ -1,0 +1,26 @@
+<!--
+ - Created by Spring7 on 4/8/2020.
+ -->
+
+<aura:component description="Pagination">
+    <aura:attribute name="pageNumber" type="Integer" default="1"/>
+    <aura:attribute name="totalPages" type="Integer" default="1"/>
+    <aura:attribute name="pageSize" type="Integer" default="0"/>
+
+    <aura:registerEvent name="paginationNotifier" type="c:PaginationNotifier"/>
+
+    <div class="slds-grid slds-grid_align-center slds-gutters slds-m-top_medium">
+        <!--<div class="slds-col">
+            <lightning:button variant="brand" label="First" title="First" onclick="{! c.firstClicked }" disabled="{!v.pageNumber==1}" />
+        </div>-->
+        <div class="slds-col">
+            <lightning:button variant="brand" label="Previous" title="Previous" onclick="{! c.previousClicked }" />
+        </div>
+        <div class="slds-col">
+            <lightning:button variant="brand" label="Next" title="Next" onclick="{! c.nextClicked }" />
+        </div>
+        <!--<div class="slds-col">
+            <lightning:button variant="brand" label="Last" title="Last" onclick="{! c.lastClicked }" />
+        </div>-->
+    </div>
+</aura:component>
