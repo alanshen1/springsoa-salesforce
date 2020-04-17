@@ -18,16 +18,19 @@ public without sharing class InvocableMethods {
             break;
         }
 
-        // notifyRatingChangeCall(accountData.recordId, accountData.rating);
-        notifyRatingChangeQueueable(accountData.recordId);
+        notifyRatingChangeFuture(accountData.recordId, accountData.rating);
+        // notifyRatingChangeQueueable(accountData.recordId);
     }
 
+    @Future(Callout=true)
+    private static void notifyRatingChangeFuture(String recordId, String rating) {
+        notifyRatingChangeCall(recordId, rating);
+    }
 
     private static void notifyRatingChangeQueueable(String recordId) {
         System.enqueueJob(new InvocableMethodsQueueable([SELECT Rating FROM Account WHERE Id = :recordId]));
     }
 
-    @Future(Callout=true)
     public static void notifyRatingChangeCall(String recordId, String rating) {
         Http http = new Http();
         HttpRequest httpRequest = new HttpRequest();
@@ -35,10 +38,10 @@ public without sharing class InvocableMethods {
         httpRequest.setMethod('POST');
 
         Map<String, Object> data = new Map<String, Object>{
-                'recordId' => recordId,
-                'rating' => rating
+                'message' => recordId + ':' + rating
         };
         httpRequest.setBody(JSON.serialize(data));
+        httpRequest.setHeader('Content-Type', 'application/json');
 
         HttpResponse httpResponse = http.send(httpRequest);
         if (httpResponse.getStatusCode() == 200) {
