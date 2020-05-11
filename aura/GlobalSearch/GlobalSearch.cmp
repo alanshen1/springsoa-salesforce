@@ -1,0 +1,5 @@
+<aura:component >
+    <aura:attribute name="term" type="String"/>
+    <lightning:input label="Search Term" value="{!v.term}"/>
+    <lightning:button label="Search" onclick="{!c.search}"/>
+</aura:component>
