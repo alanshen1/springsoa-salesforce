@@ -1,0 +1,21 @@
+<apex:page standardController="Account" extensions="DemoVFActionController">
+    <apex:form >
+        <apex:actionfunction action="{!updateMessageApex}" name="saveAction" />
+        
+        <apex:pageBlock >
+            <apex:outputPanel id="messagePanel">
+            	Message : <apex:outputText value="{!message}" ></apex:outputText>
+            </apex:outputPanel>
+        	<apex:pageBlockButtons >
+                <apex:commandButton value="Update Message" action="{!updateMessageApex}" reRender="messagePanel" oncomplete="afterUpdateMessageJS();" />
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+    
+     <script>
+        function afterUpdateMessageJS() {
+            var message = '{!message}';
+            debugger;
+        }
+    </script>
+</apex:page>
