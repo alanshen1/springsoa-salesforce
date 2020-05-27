@@ -1,21 +1,29 @@
 <apex:page standardController="Account" extensions="DemoVFActionController">
+    <apex:slds />
     <apex:form >
-        <apex:actionfunction action="{!updateMessageApex}" name="saveAction" />
-        
         <apex:pageBlock >
             <apex:outputPanel id="messagePanel">
-            	Message : <apex:outputText value="{!message}" ></apex:outputText>
+                Message : <apex:outputText value="{!vfMessage}" ></apex:outputText>
             </apex:outputPanel>
-        	<apex:pageBlockButtons >
-                <apex:commandButton value="Update Message" action="{!updateMessageApex}" reRender="messagePanel" oncomplete="afterUpdateMessageJS();" />
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Update Message" action="{!updateMessageApex}" oncomplete="afterUpdateMessagJS();" rerender="messagePanel,scriptPanle" />
             </apex:pageBlockButtons>
         </apex:pageBlock>
     </apex:form>
+    <apex:outputPanel id="scriptPanle">
+        <script>
+        var vfMessage ="{!vfMessage}";
+        </script>
+    </apex:outputPanel>
+    <script>
     
-     <script>
-        function afterUpdateMessageJS() {
-            var message = '{!message}';
-            debugger;
+    function afterUpdateMessagJS(){
+        debugger;
+        if(window.self !== window.top){
+            alert('Inside Iframe');
+        }else{
+        	alert('Not Inside IFrame');
         }
+    }
     </script>
 </apex:page>

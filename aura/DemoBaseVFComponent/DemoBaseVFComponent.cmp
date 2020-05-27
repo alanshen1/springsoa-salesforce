@@ -1,0 +1,6 @@
+<aura:component >
+    <aura:attribute name="pageURL" type="String" default="https://sfspringsoa-dev-ed--c.visualforce.com/apex/DemoVFAction"/>
+    <div class="slds-card">
+    	<iframe aura:id="vfFrame" src="{!v.pageURL}" frameborder="0" style="overflow:hidden;height:100%;width:100%" height="100%" width="100%" />    
+    </div>
+</aura:component>
